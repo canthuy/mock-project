@@ -1,0 +1,42 @@
+.hero {
+  padding-top: 4rem;
+  height: 60vh;
+  position: relative;
+
+  .hero-content {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.section{
+  &--container{
+    margin-top: 20px;
+    position: relative;
+    height: 350px;
+  }
+
+  &--img {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+  }
+
+  &--Distance {
+    margin-top: 150px;
+  }
+
+  &--gap {
+    gap: 90px;
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rounded-sale {
+  border-radius: 50px;
+}

@@ -1,0 +1,16 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.section {
+  &--gap {
+    gap: 100px;
+  }
+
+  &--break {
+    border-top: 2px solid gray;
+  }
+}

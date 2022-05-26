@@ -1,0 +1,30 @@
+header {
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #979797;
+  z-index: 999;
+
+  .active {
+    color: #fff;
+  }
+  .nav-item {
+    position: relative;
+
+    .nav-link {
+      color: #d9d9d9;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  .nav-item--border::before {
+    content: "|";
+    color: #d9d9d9;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    line-height: 1;
+    transform: translateY(-50%);
+  }
+}

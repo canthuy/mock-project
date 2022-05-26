@@ -1,1 +1,67 @@
-<p>header works!</p>
+<header class="w-100">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-xl">
+      <a class="navbar-brand" routerLink="/">
+        <img
+          class="mw-100"
+          src="../../../../assets/images/logo-vnw-white.svg"
+          alt=""
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ml-3 w-100">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://hrinsider.vietnamworks.com/nha-tuyen-dung?utm_source=homepage&utm_medium=hp_header"
+              target="_blank"
+              >HR Insider</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://www.vietnamworks.com/company/navigosgroup?lang=en&utm_source=homepage&utm_medium=hp_header"
+              target="_blank"
+              >About US</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" target="_blank">Contact US</a>
+          </li>
+          <li class="nav-item nav-item--border">
+            <a
+              class="nav-link ml-2"
+              title="Job Seeker's Site"
+              href="https://www.vietnamworks.com?lang=en&amp;utm_source=homepage&amp;utm_medium=hp_header"
+              target="_blank"
+              >Job Seeker's Site</a
+            >
+          </li>
+          <li class="nav-item ml-auto">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item nav-item--border">
+            <a class="nav-link ml-2" routerLink="/signup">Sign up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

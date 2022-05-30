@@ -1,3 +1,4 @@
+import { EditJobComponent } from './components/admin/edit-job/edit-job.component';
 import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   {path: 'admin/home', component: AdminHomeComponent},
+  {path: 'admin/jobs', children: [{path: 'new', component: EditJobComponent}]},
   { path: '**', component: NotFoundComponent },
 ];
 

@@ -19,6 +19,8 @@ import { AdminHeaderComponent } from './layouts/admin/admin-header/admin-header.
 import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.component';
 import { AdminFooterComponent } from './layouts/admin/admin-footer/admin-footer.component';
 import { AdminSidebarComponent } from './layouts/admin/admin-sidebar/admin-sidebar.component';
+import { EditJobComponent } from './components/admin/edit-job/edit-job.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { AdminSidebarComponent } from './layouts/admin/admin-sidebar/admin-sideb
     AdminHomeComponent,
     AdminFooterComponent,
     AdminSidebarComponent,
+    EditJobComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  {path: 'admin/home', component: AdminHomeComponent},
   { path: '**', component: NotFoundComponent },
 ];
 

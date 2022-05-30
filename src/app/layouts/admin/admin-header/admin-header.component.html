@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark p-0">
+  <div class="w-100 d-flex">
+    <div class="bg-primary nav-left py-2">
+      <a class="navbar-brand bg-primary" routerLink="/">
+        <img
+          src="../../../../assets/images/logo-vnw-white.svg"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+        />
+      </a>
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse flex-grow-1"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav align-items-center w-100">
+        <li class="ml-auto">
+          <div class="dropdown user-dropdown">
+            <span class="dropdown-toggle" (click)="onToggle()"
+              ><i class="fas fa-user-circle"></i
+            ></span>
+            <div class="dropdown-menu" [class.show]="show">
+              <a class="dropdown-item" (click)="onLogout()">
+                <i class="fas fa-sign-out-alt"></i> Logout</a
+              >
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

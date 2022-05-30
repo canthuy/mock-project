@@ -12,6 +12,11 @@ import { NotFoundComponent } from './layouts/common/not-found/not-found.componen
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CarouselComponent } from './layouts/common/carousel/carousel.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { AdminHeaderComponent } from './layouts/admin/admin-header/admin-header.component';
+import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.component';
+import { AdminFooterComponent } from './layouts/admin/admin-footer/admin-footer.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,9 @@ import { CarouselComponent } from './layouts/common/carousel/carousel.component'
     LoginComponent,
     SignupComponent,
     CarouselComponent,
+    AdminHeaderComponent,
+    AdminHomeComponent,
+    AdminFooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,8 +38,15 @@ import { CarouselComponent } from './layouts/common/carousel/carousel.component'
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

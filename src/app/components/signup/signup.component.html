@@ -1,1 +1,103 @@
-<p>signup works!</p>
+<div class="row m-0">
+  <div class="col-md-4 bg-primary vh-100"></div>
+
+  <div class="col-md-8 position-relative">
+    <div
+      class="container px-5 w-75 container-form position-absolute border shadow-lg"
+    >
+      <h2 class="my-4 text-center">Sign Up</h2>
+      <form [formGroup]="signupForm" (ngSubmit)="signup()">
+        <div class="form-group mb-0">
+          <label class="font-weight-bold"
+            >Name<span class="text__err">&nbsp;*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            [class.border-danger]="name.touched && name.errors"
+          />
+        </div>
+        <div class="text__err" *ngIf="name.touched && name.errors">
+          Name is required
+        </div>
+        <div class="form-group mb-0 mt-4">
+          <label class="font-weight-bold"
+            >Email address<span class="text__err">&nbsp;*</span></label
+          >
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            [class.border-danger]="email.touched && email.errors"
+          />
+        </div>
+        <div class="text__err" *ngIf="email.touched && email.errors">
+          <ng-container *ngIf="email.errors.required">
+            Email is required</ng-container
+          >
+          <ng-container *ngIf="email.errors.pattern">
+            The email format is invalid. Please check again</ng-container
+          >
+        </div>
+        <div class="form-group mb-0 mt-4">
+          <label class="font-weight-bold"
+            >Password<span class="text__err">&nbsp;*</span></label
+          >
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            [class.border-danger]="password.touched && password.errors"
+          />
+        </div>
+        <div class="text__err" *ngIf="password.touched && password.errors">
+          <ng-container *ngIf="password.errors.required"
+            >Password is required</ng-container
+          >
+          <ng-container *ngIf="password.errors.pattern"
+            >Password must contain least 6 characters</ng-container
+          >
+        </div>
+        <div class="form-group mb-0 mt-4">
+          <label class="font-weight-bold"
+            >Confirm Password<span class="text__err">&nbsp;*</span></label
+          >
+          <input
+            type="password"
+            class="form-control"
+            formControlName="confirmPassword"
+            [class.border-danger]="
+              confirmPassword.touched && confirmPassword.errors
+            "
+            [style.border-color]="confirm ? '' : '#e02020'"
+            (blur)="checkPassword()"
+          />
+        </div>
+        <div
+          class="text__err"
+          *ngIf="confirmPassword.touched && confirmPassword.errors"
+        >
+          Confirm password is required
+        </div>
+        <div class="text__err">
+          <ng-container *ngIf="!confirmPassword.errors && !confirm"
+            >Confirm password mismatches. Please try again</ng-container
+          >
+        </div>
+        <button
+          type="submit"
+          class="btn btn-warning text-white d-block ml-auto mt-3"
+          [disabled]="isInvalidForm()"
+        >
+          Sign Up
+        </button>
+
+        <p class="container m-0 py-3">
+          A member already?
+          <a class="text-warning" routerLink="/login">Login</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { AdminHeaderComponent } from './layouts/admin/admin-header/admin-header.component';
 import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.component';
 import { AdminFooterComponent } from './layouts/admin/admin-footer/admin-footer.component';
+import { EditJobComponent } from './components/admin/edit-job/edit-job.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AdminFooterComponent } from './layouts/admin/admin-footer/admin-footer.
     AdminHeaderComponent,
     AdminHomeComponent,
     AdminFooterComponent,
+    EditJobComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,29 +1,61 @@
 <div class="row m-0">
-  <div class="col-md-4 bg-primary"></div>
+  <div class="col-md-4 bg-primary vh-100"></div>
 
-  <div class="col-md-8">
-    <div class="container w-75 container-form">
-      <h2>Login</h2>
-      <form>
-        <div class="form-group">
+  <div class="col-md-8 p-0 position-relative">
+    <div
+      class="container position-absolute w-75 px-5 container-form border shadow-lg"
+    >
+      <h2 class="my-4 text-center">Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group mb-0">
           <label class="font-weight-bold"
             >Email address<span class="text__err">&nbsp;*</span></label
           >
-          <input type="email" class="form-control" />
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            [class.border-danger]="email.touched && email.errors"
+          />
         </div>
-        <div class="form-group">
+        <div class="text__err" *ngIf="email.touched && email.errors">
+          Please enter your email
+        </div>
+        <div class="form-group mb-0 mt-4">
           <label class="font-weight-bold"
             >Password<span class="text__err">&nbsp;*</span></label
           >
-          <input type="password" class="form-control" />
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            [class.border-danger]="password.touched && password.errors"
+          />
+        </div>
+        <div class="text__err" *ngIf="password.touched && password.errors">
+          Please enter your password
+        </div>
+        <div class="d-flex">
+          <button
+            type="submit"
+            class="btn btn-warning text-white d-block ml-auto mt-3"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            class="btn btn-warning text-white d-block ml-3 mt-3"
+            (click)="demoAccount()"
+          >
+            Demo
+          </button>
         </div>
 
-        <button
-          type="submit"
-          class="btn btn-warning text-white d-block ml-auto"
-        >
-          Login
-        </button>
+        <p class="container m-0 py-4">
+          Not a member?
+          <a class="text-warning" routerLink="/signup">Sign Up</a>
+        </p>
       </form>
     </div>
   </div>

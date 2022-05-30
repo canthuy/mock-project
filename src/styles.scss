@@ -27,3 +27,6 @@ $btn-border-radius: 0.25rem;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

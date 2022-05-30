@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './layouts/home/home.component';
@@ -17,7 +18,9 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { AdminHeaderComponent } from './layouts/admin/admin-header/admin-header.component';
 import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.component';
 import { AdminFooterComponent } from './layouts/admin/admin-footer/admin-footer.component';
+import { AdminSidebarComponent } from './layouts/admin/admin-sidebar/admin-sidebar.component';
 import { EditJobComponent } from './components/admin/edit-job/edit-job.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { EditJobComponent } from './components/admin/edit-job/edit-job.component
     AdminHeaderComponent,
     AdminHomeComponent,
     AdminFooterComponent,
+    AdminSidebarComponent,
     EditJobComponent,
   ],
   imports: [
@@ -42,6 +46,7 @@ import { EditJobComponent } from './components/admin/edit-job/edit-job.component
     ReactiveFormsModule,
     HttpClientModule,
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

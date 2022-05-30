@@ -1,0 +1,16 @@
+nav{
+    width: 20%;
+    height: 100vh;
+    line-height: 60px;
+    font-size: 20px;
+}
+.sidebar-item{
+    list-style-type: none;
+    // transition: transform ease 2s;
+    // width: 150px;
+    cursor: pointer;
+    &:hover{
+        color: #005385;
+        padding-left: 15px;
+    }
+}

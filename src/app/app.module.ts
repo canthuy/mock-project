@@ -20,7 +20,9 @@ import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.compon
 import { AdminFooterComponent } from './layouts/admin/admin-footer/admin-footer.component';
 import { AdminSidebarComponent } from './layouts/admin/admin-sidebar/admin-sidebar.component';
 import { EditJobComponent } from './components/admin/edit-job/edit-job.component';
-
+import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component';
+import { SearchComponent } from './components/admin/search/search.component';
+import { StatisticsComponent } from './components/admin/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,9 @@ import { EditJobComponent } from './components/admin/edit-job/edit-job.component
     AdminFooterComponent,
     AdminSidebarComponent,
     EditJobComponent,
+    AllJobsComponent,
+    SearchComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,

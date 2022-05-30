@@ -1,0 +1,42 @@
+<div>
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+    <div class="form-group mb-0 mt-4">
+      <label>Position<span class="text__err">&nbsp;*</span> </label>
+      <input formControlName="position" type="text" class="form-control" />
+    </div>
+    <div class="text__err" *ngIf="position.touched && position.errors">
+      Position is required
+    </div>
+    <div class="form-group mb-0 mt-4">
+      <label>Company<span class="text__err">&nbsp;*</span></label>
+      <input formControlName="company" type="text" class="form-control" />
+    </div>
+    <div class="text__err" *ngIf="company.touched && company.errors">
+      Company is required
+    </div>
+    <div class="form-group mb-0 mt-4">
+      <label>Job Location<span class="text__err">&nbsp;*</span></label>
+      <input formControlName="jobLocation" type="text" class="form-control" />
+    </div>
+    <div class="text__err" *ngIf="jobLocation.touched && jobLocation.errors">
+      Job Location is required
+    </div>
+    <div class="form-group mb-0 mt-4">
+      <label>Status</label>
+      <select formControlName="status" class="form-control">
+        <option *ngFor="let st of arrStatus" [ngValue]="st">
+          {{ st }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group mb-0 mt-4">
+      <label>Job Type</label>
+      <select formControlName="jobType" class="form-control">
+        <option *ngFor="let type of jobTypes" [ngValue]="type">
+          {{ type }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-warning text-white">Submit</button>
+  </form>
+</div>

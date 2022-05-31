@@ -18,6 +18,7 @@ export class AuthService {
     let token = localStorage.getItem(this.TOKEN_NAME);
     if (token) {
       this.TOKEN = token;
+      this.user = JSON.parse(localStorage.getItem('user'));
     }
   }
 
@@ -28,7 +29,13 @@ export class AuthService {
         tap((res: AuthResponse) => {
           this.TOKEN = res.token;
           this.user = res.user;
+          let saveUser = {
+            name: this.user.name,
+            email: this.user.email,
+            location: this.user.location,
+          };
           localStorage.setItem(this.TOKEN_NAME, this.TOKEN);
+          localStorage.setItem('user', JSON.stringify(saveUser));
         })
       );
   }
@@ -42,5 +49,6 @@ export class AuthService {
 
   public logout() {
     localStorage.removeItem(this.TOKEN_NAME);
+    localStorage.removeItem('user');
   }
 }

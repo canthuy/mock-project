@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "thuyct6-anpth-hn22-angular-01": {
+      "hosting": {
+        "mock-project": [
+          "thuyct6-anpth-hn22-angular-01"
+        ]
+      }
+    }
+  }
+}

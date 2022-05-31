@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-job.component.scss'],
 })
 export class EditJobComponent implements OnInit {
+  public editMode: boolean;
   public arrStatus: string[] = ['pending', 'interview', 'declined'];
   public jobTypes: string[] = [
     'full-time',
@@ -17,13 +18,7 @@ export class EditJobComponent implements OnInit {
     'internship',
   ];
 
-  public jobForm = new FormGroup({
-    position: new FormControl('', [Validators.required]),
-    company: new FormControl('', [Validators.required]),
-    jobLocation: new FormControl('', [Validators.required]),
-    status: new FormControl(this.arrStatus[0]),
-    jobType: new FormControl(this.jobTypes[0]),
-  });
+  public jobForm: FormGroup;
 
   constructor(
     private jobService: JobService,
@@ -31,7 +26,11 @@ export class EditJobComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((param) => {
+      this.initForm(param.id);
+    });
+  }
 
   // getter
   get position() {
@@ -50,8 +49,30 @@ export class EditJobComponent implements OnInit {
     return this.jobForm.get('jobType');
   }
 
+  // Init Form
+  private initForm(id: string) {
+    if (id) {
+      this.editMode = true;
+      console.log('edit');
+    } else {
+      this.editMode = false;
+      this.jobForm = new FormGroup({
+        position: new FormControl('', [Validators.required]),
+        company: new FormControl('', [Validators.required]),
+        jobLocation: new FormControl('', [Validators.required]),
+        status: new FormControl(this.arrStatus[0]),
+        jobType: new FormControl(this.jobTypes[0]),
+      });
+    }
+  }
+
   // Submit Form
   public onSubmit() {
     console.log(this.jobForm.value);
+  }
+
+  // Cancel
+  public onCancel() {
+    this.router.navigate(['/admin']);
   }
 }

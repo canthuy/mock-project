@@ -10,6 +10,10 @@ export class JobService {
 
   constructor(private http: HttpClient) {}
 
+  public getAllJobs() {
+    return this.http.get(`${this.BASE_URL}/jobs`);
+  }
+
   public addJob(job: Job) {
     return this.http.post(`${this.BASE_URL}/jobs`, job);
   }

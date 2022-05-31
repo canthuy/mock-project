@@ -1,43 +1,60 @@
-<!-- <div>
+<div class="form-group border border-primary p-4 mb-0 mt-4">
   <h5>Search Form</h5>
-  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
-    <div class="form-group mb-0 mt-4">
-      <label>Position<span class="text__err">&nbsp;*</span> </label>
-      <input formControlName="position" type="text" class="form-control" />
+  <form>
+    <label>Search</label>
+    <input type="text" class="form-control" />
+    <div class="row mt-4">
+      <div class="col-3">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01"
+              >Status</label
+            >
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>all</option>
+            <option value="1">interview</option>
+            <option value="2">declined</option>
+            <option value="3">pending</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01"
+              >Type</label
+            >
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>all</option>
+            <option value="1">full-time</option>
+            <option value="2">part-time</option>
+            <option value="3">remote</option>
+            <option value="4">internship</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01"
+              >Sort</label
+            >
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>latest</option>
+            <option value="1">oldest</option>
+            <option value="2">a-z</option>
+            <option value="3">z-a</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-danger">Clear filter</button>
+      </div>
     </div>
-    <div class="text__err" *ngIf="position.touched && position.errors">
-      Position is required
-    </div>
-    <div class="form-group mb-0 mt-4">
-      <label>Company<span class="text__err">&nbsp;*</span></label>
-      <input formControlName="company" type="text" class="form-control" />
-    </div>
-    <div class="text__err" *ngIf="company.touched && company.errors">
-      Company is required
-    </div>
-    <div class="form-group mb-0 mt-4">
-      <label>Job Location<span class="text__err">&nbsp;*</span></label>
-      <input formControlName="jobLocation" type="text" class="form-control" />
-    </div>
-    <div class="text__err" *ngIf="jobLocation.touched && jobLocation.errors">
-      Job Location is required
-    </div>
-    <div class="form-group mb-0 mt-4">
-      <label>Status</label>
-      <select formControlName="status" class="form-control">
-        <option *ngFor="let st of arrStatus" [ngValue]="st">
-          {{ st }}
-        </option>
-      </select>
-    </div>
-    <div class="form-group mb-0 mt-4">
-      <label>Job Type</label>
-      <select formControlName="jobType" class="form-control">
-        <option *ngFor="let type of jobTypes" [ngValue]="type">
-          {{ type }}
-        </option>
-      </select>
-    </div>
-    <button type="submit" class="btn btn-warning text-white">Submit</button>
+
+    <!-- <button type="submit" class="btn btn-warning text-white">Submit</button> -->
   </form>
-</div> -->
+</div>

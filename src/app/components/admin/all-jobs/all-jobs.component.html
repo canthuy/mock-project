@@ -1,2 +1,7 @@
 <app-search></app-search>
-<app-job></app-job>
+<h3 class="mt-4">{{ totalJobs }} jobs found</h3>
+<div class="job__card">
+  <div *ngFor="let job of jobData">
+    <app-job [job]="job"></app-job>
+  </div>
+</div>

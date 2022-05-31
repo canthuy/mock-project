@@ -3,21 +3,36 @@
   <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
     <div class="form-group mb-0 mt-2">
       <label>Position<span class="text__err">&nbsp;*</span> </label>
-      <input formControlName="position" type="text" class="form-control" />
+      <input
+        formControlName="position"
+        type="text"
+        class="form-control"
+        [class.border-danger]="position.touched && position.errors"
+      />
     </div>
     <div class="text__err" *ngIf="position.touched && position.errors">
       Position is required
     </div>
     <div class="form-group mb-0 mt-2">
       <label>Company<span class="text__err">&nbsp;*</span></label>
-      <input formControlName="company" type="text" class="form-control" />
+      <input
+        formControlName="company"
+        type="text"
+        class="form-control"
+        [class.border-danger]="company.touched && company.errors"
+      />
     </div>
     <div class="text__err" *ngIf="company.touched && company.errors">
       Company is required
     </div>
     <div class="form-group mb-0 mt-2">
       <label>Job Location<span class="text__err">&nbsp;*</span></label>
-      <input formControlName="jobLocation" type="text" class="form-control" />
+      <input
+        formControlName="jobLocation"
+        type="text"
+        class="form-control"
+        [class.border-danger]="jobLocation.touched && jobLocation.errors"
+      />
     </div>
     <div class="text__err" *ngIf="jobLocation.touched && jobLocation.errors">
       Job Location is required
@@ -39,7 +54,11 @@
       </select>
     </div>
     <div class="d-flex justify-content-end mt-3">
-      <button type="submit" class="btn btn-warning text-white mr-2">
+      <button
+        type="submit"
+        class="btn btn-warning text-white mr-2"
+        [disabled]="jobForm.invalid"
+      >
         Submit
       </button>
       <button

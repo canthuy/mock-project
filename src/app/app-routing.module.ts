@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { EditJobComponent } from './components/admin/edit-job/edit-job.component';
 import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.component';
 import { NgModule } from '@angular/core';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminHomeComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: StatisticsComponent },

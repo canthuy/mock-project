@@ -1,25 +1,42 @@
-<div class="card pt-2">
+<div class="card m-3 shadow">
   <div class="card-header">
-    <!-- <img class="card-img-top" src="..." alt="Card image cap" /> -->
-    <h4>Civil Engineer</h4>
-    <h4 class="font-weight-light">Bechtelar-Bednar</h4>
+    <h4>{{ job.position }}</h4>
+    <h5 class="font-weight-light">{{ job.company }}</h5>
   </div>
   <div class="card-body">
     <div class="row">
       <div class="col-6">
         <div class="job_location">
-          <i class="fas fa-map-marker-alt"></i> Kiamba
+          <i class="fas fa-map-marker-alt fa-lg"></i>
+          {{ job.jobLocation }}
         </div>
-        <div class="job_type"><i class="fas fa-briefcase"></i> Intership</div>
+        <div class="job_type">
+          <i class="fas fa-briefcase fa-lg"></i> {{ job.jobType | titlecase }}
+        </div>
       </div>
       <div class="col-6">
         <div class="created_at">
-          <i class="fas fa-calendar-alt"></i> Dec 27th, 2021
+          <i class="fas fa-calendar-alt fa-lg"></i>
+          {{ job.createdAt | date }}
         </div>
-        <button class="btn btn-outline-danger">Declined</button>
+        <ng-container *ngIf="job_status === jobStatus[2]">
+          <button class="btn btn-outline-danger">
+            {{ job_status | titlecase }}
+          </button>
+        </ng-container>
+        <ng-container *ngIf="job_status === jobStatus[0]">
+          <button class="btn btn-outline-warning">
+            {{ job_status | titlecase }}
+          </button>
+        </ng-container>
+        <ng-container *ngIf="job_status === jobStatus[1]">
+          <button class="btn btn-outline-success">
+            {{ job_status | titlecase }}
+          </button>
+        </ng-container>
       </div>
     </div>
-    <div class="btn-group">
+    <div>
       <button type="button" class="btn btn-success">Edit</button>
       <button type="button" class="btn btn-danger">Delete</button>
     </div>

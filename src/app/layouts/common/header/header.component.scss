@@ -27,4 +27,15 @@ header {
     line-height: 1;
     transform: translateY(-50%);
   }
+  .user-dropdown{
+    cursor: pointer;
+  }
+  .dropdown-menu{
+    left: auto;
+    right: 0;
+    min-width: 100%;
+  }
+  .dropdown-toggle::after{
+    margin-left: 10px;
+  }
 }

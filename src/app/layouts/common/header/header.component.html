@@ -54,12 +54,35 @@
               >Job Seeker's Site</a
             >
           </li>
-          <li class="nav-item ml-auto">
-            <a class="nav-link" routerLink="/login">Login</a>
+
+          <li class="ml-auto nav-item" *ngIf="isLogin; else login">
+            <div class="dropdown user-dropdown">
+              <span class="dropdown-toggle nav-link" (click)="onToggle()"
+                ><i class="fas fa-user-circle fa-lg mr-1"></i>
+                {{ authService.user.name }}</span
+              >
+              <div class="dropdown-menu" [class.show]="show">
+                <a class="dropdown-item" routerLink="/admin">
+                  <i class="fas fa-home mr-2"></i>Dashboard</a
+                >
+                <a class="dropdown-item" routerLink="/admin/profile">
+                  <i class="fas fa-user-alt mr-2"></i>Profile</a
+                >
+                <a class="dropdown-item" (click)="onLogout()">
+                  <i class="fas fa-sign-out-alt mr-2"></i>Logout</a
+                >
+              </div>
+            </div>
           </li>
-          <li class="nav-item nav-item--border">
-            <a class="nav-link ml-2" routerLink="/signup">Sign up</a>
-          </li>
+
+          <ng-template #login>
+            <li class="nav-item ml-auto">
+              <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+            <li class="nav-item nav-item--border">
+              <a class="nav-link ml-2" routerLink="/signup">Sign up</a>
+            </li>
+          </ng-template>
         </ul>
       </div>
     </div>

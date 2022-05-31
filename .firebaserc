@@ -1,9 +1,9 @@
 {
   "targets": {
-    "anpth-thuyct6-hn22-angular-01": {
+    "thuyct6-anpth-hn22-angular-01": {
       "hosting": {
         "mock-project": [
-          "anpth-thuyct6-hn22-angular-01"
+          "thuyct6-anpth-hn22-angular-01"
         ]
       }
     }

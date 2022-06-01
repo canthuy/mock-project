@@ -1,3 +1,4 @@
+import { Job } from 'src/app/models/job.model';
 import { JobService } from './../../../services/job.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -20,6 +21,17 @@ export class EditJobComponent implements OnInit {
 
   public jobForm: FormGroup;
 
+  private job: Job = {
+    company: '',
+    position: '',
+    status: 'pending',
+    jobType: 'full-time',
+    jobLocation: '',
+    createdBy: '',
+    _id: '',
+    updatedAt: '',
+    createdAt: '',
+  };
   constructor(
     private jobService: JobService,
     private route: ActivatedRoute,
@@ -53,24 +65,32 @@ export class EditJobComponent implements OnInit {
   private initForm(id: string) {
     if (id) {
       this.editMode = true;
-      console.log('edit');
+      if (this.jobService.getJobById(id)) {
+        this.job = this.jobService.getJobById(id);
+      } else {
+        this.router.navigate(['/admin/jobs']);
+      }
     } else {
       this.editMode = false;
-      this.jobForm = new FormGroup({
-        position: new FormControl('', [Validators.required]),
-        company: new FormControl('', [Validators.required]),
-        jobLocation: new FormControl('', [Validators.required]),
-        status: new FormControl(this.arrStatus[0]),
-        jobType: new FormControl(this.jobTypes[0]),
-      });
     }
+    this.jobForm = new FormGroup({
+      position: new FormControl(this.job.position, [Validators.required]),
+      company: new FormControl(this.job.company, [Validators.required]),
+      jobLocation: new FormControl(this.job.jobLocation, [Validators.required]),
+      status: new FormControl(this.job.status),
+      jobType: new FormControl(this.job.jobType),
+    });
   }
 
   // Submit Form
   public onSubmit() {
-    console.log(this.jobForm.value);
     if (this.editMode) {
-      console.log('Edit Job');
+      this.jobService
+        .updateJob(this.job._id, this.jobForm.value)
+        .subscribe((res) => {
+          console.log(res);
+          this.router.navigate(['/admin/jobs']);
+        });
     } else {
       this.jobService.addJob(this.jobForm.value).subscribe((res) => {
         console.log(res);
@@ -80,6 +100,10 @@ export class EditJobComponent implements OnInit {
 
   // Cancel
   public onCancel() {
-    this.router.navigate(['/admin']);
+    if (this.editMode) {
+      this.router.navigate(['/admin/jobs']);
+    } else {
+      this.router.navigate(['/admin']);
+    }
   }
 }

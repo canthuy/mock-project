@@ -40,7 +40,11 @@
     <div class="form-group mb-0 mt-2">
       <label>Status</label>
       <select formControlName="status" class="form-control">
-        <option *ngFor="let st of arrStatus" [ngValue]="st">
+        <option
+          class="text-capitalize"
+          *ngFor="let st of arrStatus"
+          [ngValue]="st"
+        >
           {{ st }}
         </option>
       </select>
@@ -48,7 +52,11 @@
     <div class="form-group mb-0 mt-2">
       <label>Job Type</label>
       <select formControlName="jobType" class="form-control">
-        <option *ngFor="let type of jobTypes" [ngValue]="type">
+        <option
+          class="text-capitalize"
+          *ngFor="let type of jobTypes"
+          [ngValue]="type"
+        >
           {{ type }}
         </option>
       </select>

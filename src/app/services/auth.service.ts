@@ -13,16 +13,19 @@ export class AuthService {
 
   public TOKEN: string;
   public user: User;
+  public isLogin: boolean = false;
 
   constructor(private http: HttpClient) {
     let token = localStorage.getItem(this.TOKEN_NAME);
     if (token) {
       this.TOKEN = token;
       this.user = JSON.parse(localStorage.getItem('user'));
+      this.isLogin = true;
     }
   }
 
   public login({ email, password }) {
+    this.isLogin = true;
     return this.http
       .post(this.BASE_URL + '/auth/login', { email, password })
       .pipe(
@@ -43,11 +46,12 @@ export class AuthService {
   public signup(user: User) {
     return this.http.post(this.BASE_URL + '/auth/register', user);
   }
-  public isLogin(): boolean {
-    return !!this.user;
-  }
+  // public isLogin(): boolean {
+  //   return !!this.user;
+  // }
 
   public logout() {
+    this.isLogin = false;
     localStorage.removeItem(this.TOKEN_NAME);
     localStorage.removeItem('user');
   }

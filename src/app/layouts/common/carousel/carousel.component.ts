@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {
   NgbCarousel,
   NgbSlideEvent,
@@ -11,6 +11,8 @@ import {
   styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent implements OnInit {
+  // @Input('images') images;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -23,7 +25,6 @@ export class CarouselComponent implements OnInit {
   unpauseOnArrow = false;
   pauseOnIndicator = false;
   pauseOnHover = true;
-  pauseOnFocus = true;
 
   @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
@@ -36,7 +37,7 @@ export class CarouselComponent implements OnInit {
     this.paused = !this.paused;
   }
 
-  onSlide(slideEvent: NgbSlideEvent) {
+  public onSlide(slideEvent: NgbSlideEvent) {
     if (
       this.unpauseOnArrow &&
       slideEvent.paused &&

@@ -5,7 +5,7 @@ export interface Job {
   jobType: string;
   jobLocation: string;
   createdBy: string;
-  id: string;
+  _id: string;
   updatedAt: string;
   createdAt: string;
 }

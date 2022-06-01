@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHeaderComponent implements OnInit {
   public show = false;
-  constructor(public authService: AuthService, private roter: Router) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -19,7 +19,7 @@ export class AdminHeaderComponent implements OnInit {
 
   public onLogout() {
     this.authService.logout();
-    this.roter.navigate(['/']);
+    this.router.navigate(['/']);
     this.show = false;
   }
 }

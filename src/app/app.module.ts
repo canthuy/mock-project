@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './layouts/home/home.component';
@@ -23,8 +25,9 @@ import { EditJobComponent } from './components/admin/edit-job/edit-job.component
 import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component';
 import { SearchComponent } from './components/admin/search/search.component';
 import { StatisticsComponent } from './components/admin/statistics/statistics.component';
-import { JobComponent } from './components/admin/job/job.component';
+import { JobComponent } from './layouts/job/job.component';
 import { AdminProfileComponent } from './layouts/admin/admin-profile/admin-profile.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,9 @@ import { AdminProfileComponent } from './layouts/admin/admin-profile/admin-profi
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [

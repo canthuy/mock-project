@@ -45,7 +45,7 @@
           *ngFor="let st of arrStatus"
           [ngValue]="st"
         >
-          {{ st }}
+          {{ st | titlecase }}
         </option>
       </select>
     </div>
@@ -57,7 +57,7 @@
           *ngFor="let type of jobTypes"
           [ngValue]="type"
         >
-          {{ type }}
+          {{ type | titlecase }}
         </option>
       </select>
     </div>

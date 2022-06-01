@@ -56,17 +56,17 @@
     <div class="d-flex justify-content-end mt-3">
       <button
         type="submit"
-        class="btn btn-warning text-white mr-2"
-        [disabled]="jobForm.invalid"
-      >
-        Submit
-      </button>
-      <button
-        type="submit"
-        class="btn btn-danger text-white"
+        class="btn btn-danger text-white mr-2"
         (click)="onCancel()"
       >
         Cancel
+      </button>
+      <button
+        type="submit"
+        class="btn btn-warning text-white"
+        [disabled]="jobForm.invalid"
+      >
+        Submit
       </button>
     </div>
   </form>

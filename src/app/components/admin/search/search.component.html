@@ -1,60 +1,51 @@
-<div class="form-group border border-primary p-4 mb-0 mt-4">
-  <h5>Search Form</h5>
-  <form>
+<div class="search-form form-group border shadow p-5 mb-0 mt-5 mx-auto w-75">
+  <h4>Search Form</h4>
+  <form [formGroup]="searchForm">
     <label>Search</label>
-    <input type="text" class="form-control" />
+    <input type="text" class="form-control" formControlName="search" />
     <div class="row mt-4">
-      <div class="col-3">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Status</label
-            >
-          </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option selected>all</option>
-            <option value="1">interview</option>
-            <option value="2">declined</option>
-            <option value="3">pending</option>
+      <div class="col-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Status</span>
+          <select class="form-control" formControlName="status">
+            <option *ngFor="let status of jobStatus" [ngValue]="status">
+              {{ status | titlecase }}
+            </option>
           </select>
         </div>
       </div>
-      <div class="col-3">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Type</label
-            >
-          </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option selected>all</option>
-            <option value="1">full-time</option>
-            <option value="2">part-time</option>
-            <option value="3">remote</option>
-            <option value="4">internship</option>
+      <div class="col-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Type</span>
+          <select class="form-control" formControlName="type">
+            <option *ngFor="let type of jobTypes" [ngValue]="type">
+              {{ type | titlecase }}
+            </option>
           </select>
         </div>
       </div>
-      <div class="col-3">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Sort</label
-            >
-          </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option selected>latest</option>
-            <option value="1">oldest</option>
-            <option value="2">a-z</option>
-            <option value="3">z-a</option>
+      <div class="col-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Sort</span>
+          <select class="form-control" formControlName="sort">
+            <option *ngFor="let sort of jobSort" [ngValue]="sort">
+              {{ sort | titlecase }}
+            </option>
           </select>
         </div>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-danger">Clear filter</button>
       </div>
     </div>
-
-    <!-- <button type="submit" class="btn btn-warning text-white">Submit</button> -->
+    <div class="search-btn d-flex justify-content-end mt-3">
+      <button class="btn btn-danger text-white mr-3" (click)="onClear()">
+        Clear
+      </button>
+      <button
+        type="submit"
+        class="btn btn-warning text-white"
+        (click)="onFilter()"
+      >
+        Filter
+      </button>
+    </div>
   </form>
 </div>

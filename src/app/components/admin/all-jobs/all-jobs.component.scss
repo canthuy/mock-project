@@ -1,5 +1,9 @@
+.job__all{
+    width: 90%;
+}
 .job__card{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
+    width: 90%;
 }

@@ -23,10 +23,13 @@ export class JobService {
 
   public getJobById(id: string) {
     return this.jobs.find((value) => value._id === id);
+<<<<<<< HEAD
   }
 
   public getStats() {
     return this.http.get(`${this.BASE_URL}/toolkit/jobs/stats`);
+=======
+>>>>>>> 90864e812fbcf6505bc1a3ed28120c6c4b92db3c
   }
 
   public addJob(job: Job) {

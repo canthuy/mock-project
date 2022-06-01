@@ -89,7 +89,10 @@ export class EditJobComponent implements OnInit {
         .updateJob(this.job._id, this.jobForm.value)
         .subscribe((res) => {
           console.log(res);
+<<<<<<< HEAD
           this.router.navigate(['/admin/jobs']);
+=======
+>>>>>>> 90864e812fbcf6505bc1a3ed28120c6c4b92db3c
         });
     } else {
       this.jobService.addJob(this.jobForm.value).subscribe((res) => {

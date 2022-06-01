@@ -33,6 +33,24 @@ export class JobService {
     return this.http.post(`${this.BASE_URL}/jobs`, job);
   }
 
+  public searchJob(
+    status: string,
+    jobType: string,
+    sort: string,
+    page: string,
+    search: string
+  ) {
+    return this.http.get(`${this.BASE_URL}/toolkit/jobs`, {
+      params: {
+        status: status,
+        jobType: jobType,
+        sort: sort,
+        page: page,
+        search: search,
+      },
+    });
+  }
+
   public updateJob(id: string, job: Job) {
     return this.http.patch(`${this.BASE_URL}/toolkit/jobs/${id}`, job);
   }

@@ -25,7 +25,7 @@ import { EditJobComponent } from './components/admin/edit-job/edit-job.component
 import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component';
 import { SearchComponent } from './components/admin/search/search.component';
 import { StatisticsComponent } from './components/admin/statistics/statistics.component';
-import { JobComponent } from './components/admin/job/job.component';
+import { JobComponent } from './layouts/job/job.component';
 import { AdminProfileComponent } from './layouts/admin/admin-profile/admin-profile.component';
 import { ToastrModule } from 'ngx-toastr';
 

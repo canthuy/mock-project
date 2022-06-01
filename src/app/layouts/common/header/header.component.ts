@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.isLogin = this.authService.isLogin();
+    // this.isLogin = this.authService.isLogin();
   }
 
   public onToggle() {
@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
 
   public onLogout() {
     this.authService.logout();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
     this.show = false;
-    this.isLogin = false;
+    // this.isLogin = false;
   }
 }

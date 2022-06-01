@@ -55,7 +55,7 @@
             >
           </li>
 
-          <li class="ml-auto nav-item" *ngIf="isLogin; else login">
+          <li class="ml-auto nav-item" *ngIf="authService.isLogin; else login">
             <div class="dropdown user-dropdown">
               <span class="dropdown-toggle nav-link" (click)="onToggle()"
                 ><i class="fas fa-user-circle fa-lg mr-1"></i>

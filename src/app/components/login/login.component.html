@@ -1,10 +1,14 @@
+<ngx-spinner
+  [fullScreen]="true"
+  type="ball-spin-clockwise"
+  size="medium"
+  bdColor="rgba(51,51,51,0.5)"
+></ngx-spinner>
 <div class="row m-0">
   <div class="col-md-4 bg-primary vh-100"></div>
 
   <div class="col-md-8 p-0 position-relative">
-    <div
-      class="container position-absolute w-75 px-5 container-form border shadow-lg"
-    >
+    <div class="position-absolute w-75 px-5 container-form border shadow-lg">
       <h2 class="my-4 text-center">Login</h2>
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="form-group mb-0">
@@ -37,18 +41,18 @@
         </div>
         <div class="d-flex">
           <button
-            type="submit"
-            class="btn btn-warning text-white d-block ml-auto mt-3"
-            [disabled]="loginForm.invalid"
-          >
-            Login
-          </button>
-          <button
             type="button"
-            class="btn btn-warning text-white d-block ml-3 mt-3"
+            class="btn btn-info text-white d-block ml-auto mt-3"
             (click)="demoAccount()"
           >
             Demo
+          </button>
+          <button
+            type="submit"
+            class="btn btn-warning text-white d-block ml-3 mt-3"
+            [disabled]="loginForm.invalid"
+          >
+            Login
           </button>
         </div>
 

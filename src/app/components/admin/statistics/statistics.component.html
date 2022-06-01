@@ -1,10 +1,17 @@
+<ngx-spinner
+  [fullScreen]="false"
+  type="ball-fussion"
+  size="medium"
+  bdColor="rgba(51,51,51,0.5)"
+></ngx-spinner>
+
 <div class="row mt-4">
   <div class="col-xl-4 col-md-6">
     <div class="rounded job-statistic job-pending p-4">
       <div
         class="d-flex text-warning align-items-center justify-content-between"
       >
-        <h1>24</h1>
+        <h1>{{ totalStats.pending }}</h1>
         <div class="p-3 container-icon rounded">
           <i class="fas fa-spinner icon"></i>
         </div>
@@ -15,7 +22,7 @@
   <div class="col-xl-4 col-md-6">
     <div class="rounded job-statistic job-interview p-4">
       <div class="d-flex align-items-center justify-content-between">
-        <h1>27</h1>
+        <h1>{{ totalStats.interview }}</h1>
         <div class="p-3 container-icon rounded">
           <i class="fas fa-calendar-check icon"></i>
         </div>
@@ -26,7 +33,7 @@
   <div class="col-xl-4 col-md-6">
     <div class="rounded job-statistic job-declined p-4">
       <div class="d-flex align-items-center justify-content-between">
-        <h1>34</h1>
+        <h1>{{ totalStats.declined }}</h1>
         <div class="p-3 container-icon rounded">
           <i class="fas fa-calendar-times icon"></i>
         </div>

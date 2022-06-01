@@ -25,6 +25,10 @@ export class JobService {
     return this.jobs.find((value) => value._id === id);
   }
 
+  public getStats() {
+    return this.http.get(`${this.BASE_URL}/toolkit/jobs/stats`);
+  }
+
   public addJob(job: Job) {
     return this.http.post(`${this.BASE_URL}/jobs`, job);
   }

@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { User, AuthResponse } from './../../models/user.model';
 import { AuthService } from './../../services/auth.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
@@ -26,7 +27,11 @@ export class SignupComponent implements OnInit {
     confirmPassword: new FormControl('', [Validators.required]),
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.confirmPassword.valueChanges.subscribe((value) => {
@@ -56,16 +61,20 @@ export class SignupComponent implements OnInit {
       password: this.password.value,
       location: 'Viet Nam',
     };
+    this.spinner.show();
     this.authService.signup(user).subscribe((res: AuthResponse) => {
       console.log(res);
-      let { email, password } = res.user;
-      this.authService.login({ email, password }).subscribe((val) => {
-        if (this.authService.isLogin()) {
-          this.router.navigate(['/admin/home']);
-        } else {
-          console.log(val);
-        }
-      });
+      this.spinner.hide();
+
+      this.authService
+        .login({ email: this.email.value, password: this.password.value })
+        .subscribe((val) => {
+          if (this.authService.isLogin) {
+            this.router.navigate(['/admin/home']);
+          } else {
+            console.log(val);
+          }
+        });
     });
   }
 

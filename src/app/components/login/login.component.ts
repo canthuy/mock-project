@@ -1,7 +1,9 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,12 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -31,14 +38,21 @@ export class LoginComponent implements OnInit {
 
   // Login function
   public login(): void {
+    this.spinner.show();
     this.authService.login(this.loginForm.value).subscribe((val) => {
-      if(this.authService.isLogin()){
-        this.router.navigate(['/admin/home'])
+      this.spinner.hide();
+      if (this.authService.isLogin) {
+        this.router.navigate(['/admin/home']);
+        this.showSuccess();
+      } else {
+        console.log(val);
       }
-      else {
-      console.log(val);
+    });
+  }
 
-      }
+  private showSuccess() {
+    this.toastr.success('Success', '', {
+      timeOut: 5000,
     });
   }
 

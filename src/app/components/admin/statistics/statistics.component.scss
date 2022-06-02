@@ -1,26 +1,35 @@
-@mixin change_color($color){
-    border-bottom: 5px solid $color;
+@mixin change_color($color) {
+  border-bottom: 5px solid $color;
 
-    &>div{
-        color: $color
-    }
-    .container-icon {
-        background-color: rgba($color, .25);
-    }
+  & > div {
+    color: $color;
+  }
+  .container-icon {
+    background-color: rgba($color, 0.25);
+  }
 }
 .icon {
-    font-size: 32px;
+  font-size: 32px;
 }
 .job-statistic {
-    border: 1px solid #dee2e6;
+  border: 1px solid #dee2e6;
+
+  &:hover {
+    box-shadow: 0 1rem 1.5rem rgb(0 0 0 / 25%);
+  }
 }
 .job-pending {
-    @include change_color($color: #f7941d)
+  @include change_color($color: #f7941d);
 }
 
 .job-interview {
-    @include change_color($color: #56ad64)
+  @include change_color($color: #56ad64);
 }
 .job-declined {
-    @include change_color($color: #c93939)
+  @include change_color($color: #c93939);
+}
+
+.container-custom {
+  width: 90%;
+  max-width: 1200px;
 }

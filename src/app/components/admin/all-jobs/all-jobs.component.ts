@@ -24,5 +24,10 @@ export class AllJobsComponent implements OnInit {
       this.totalJobs = res.totalJobs;
       console.log(res);
     });
+
+    this.jobService.jobsChange.subscribe((jobs: Job[]) => {
+      this.jobData = jobs;
+      console.log(jobs);
+    });
   }
 }

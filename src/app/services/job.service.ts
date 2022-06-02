@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 export class JobService {
   private BASE_URL = 'https://jobify-prod.herokuapp.com/api/v1';
   private jobs: Job[] = [];
+  public jobsChange = new Subject<Job[]>();
 
   constructor(private http: HttpClient) {}
 
@@ -40,18 +41,28 @@ export class JobService {
     page: string,
     search: string
   ) {
-    return this.http.get(`${this.BASE_URL}/toolkit/jobs`, {
-      params: {
-        status: status,
-        jobType: jobType,
-        sort: sort,
-        page: page,
-        search: search,
-      },
-    });
+    return this.http
+      .get(`${this.BASE_URL}/toolkit/jobs`, {
+        params: {
+          status: status,
+          jobType: jobType,
+          sort: sort,
+          page: page,
+          search: search,
+        },
+      })
+      .pipe(
+        tap((value: any) => {
+          this.jobsChange.next(value.jobs);
+        })
+      );
   }
 
   public updateJob(id: string, job: Job) {
     return this.http.patch(`${this.BASE_URL}/toolkit/jobs/${id}`, job);
+  }
+
+  public deleteJob(id: string) {
+    return this.http.delete(`${this.BASE_URL}/toolkit/jobs/${id}`);
   }
 }

@@ -50,7 +50,6 @@ export class SearchComponent implements OnInit {
 
   //Submit Search
   public onFilter() {
-    console.log(this.searchForm.value);
     this.jobService
       .searchJob(
         this.searchForm.value.status,

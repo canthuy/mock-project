@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { JobService } from 'src/app/services/job.service';
@@ -10,6 +10,8 @@ import { JobService } from 'src/app/services/job.service';
 })
 export class SearchComponent implements OnInit {
   @Input('data') allJobRes;
+  @Output('sendDataForm') sendDataForm = new EventEmitter();
+
   public jobStatus: string[] = ['all', 'pending', 'interview', 'declined'];
   public jobTypes: string[] = [
     'all',
@@ -19,7 +21,7 @@ export class SearchComponent implements OnInit {
     'internship',
   ];
 
-  public jobSort: string[] = ['latest', 'oldest', 'A-Z', 'Z-A'];
+  public jobSort: string[] = ['latest', 'oldest', 'a-z', 'z-a'];
 
   public searchForm = new FormGroup({
     search: new FormControl(''),
@@ -52,17 +54,17 @@ export class SearchComponent implements OnInit {
   //Submit Search
   public onFilter() {
     this.spinner.show();
-    this.jobService
-      .searchJob(
-        this.searchForm.value.status,
-        this.searchForm.value.type,
-        this.searchForm.value.sort,
-        this.searchForm.value.page,
-        this.searchForm.value.search
-      )
-      .subscribe((res: any) => {
-        this.spinner.hide();
-      });
+    const param = {
+      status: this.searchForm.value.status,
+      jobType: this.searchForm.value.type,
+      sort: this.searchForm.value.sort,
+      page: this.searchForm.value.page,
+      search: this.searchForm.value.search,
+    };
+    this.sendDataForm.emit(param);
+    this.jobService.getJobs(param).subscribe((res: any) => {
+      this.spinner.hide();
+    });
   }
 
   //Cancel Search

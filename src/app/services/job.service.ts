@@ -65,43 +65,43 @@ export class JobService {
     return this.http.post(this.BASE_URL, job);
   }
 
-  public searchJob(
-    status: string = 'all',
-    jobType: string = 'all',
-    sort: string = 'latest',
-    page: string = '1',
-    search: string = ''
-  ) {
-    return this.http
-      .get(this.BASE_URL, {
-        params: {
-          status: status,
-          jobType: jobType,
-          sort: sort,
-          page: page,
-          search: search,
-        },
-      })
-      .pipe(
-        tap((res: any) => {
-          this.jobsChange.next(res);
-        })
-      );
-  }
-
   public updateJob(id: string, job: Job) {
     return this.http.patch(`${this.BASE_URL}/${id}`, job);
-  }
-
-  public nextPageAllJobs(page: string) {
-    return this.http.get(`${this.BASE_URL}?page=${page}`).pipe(
-      tap((res: any) => {
-        this.jobsChange.next(res);
-      })
-    );
   }
 
   public deleteJob(id: string) {
     return this.http.delete(`${this.BASE_URL}/toolkit/jobs/${id}`);
   }
+
+  // public searchJob(
+  //   status: string = 'all',
+  //   jobType: string = 'all',
+  //   sort: string = 'latest',
+  //   page: string = '1',
+  //   search: string = ''
+  // ) {
+  //   return this.http
+  //     .get(this.BASE_URL, {
+  //       params: {
+  //         status: status,
+  //         jobType: jobType,
+  //         sort: sort,
+  //         page: page,
+  //         search: search,
+  //       },
+  //     })
+  //     .pipe(
+  //       tap((res: any) => {
+  //         this.jobsChange.next(res);
+  //       })
+  //     );
+  // }
+
+  // public nextPageAllJobs(page: string) {
+  //   return this.http.get(`${this.BASE_URL}?page=${page}`).pipe(
+  //     tap((res: any) => {
+  //       this.jobsChange.next(res);
+  //     })
+  //   );
+  // }
 }

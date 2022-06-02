@@ -1,17 +1,13 @@
-<ngx-spinner
-  [fullScreen]="true"
-  type="ball-spin-clockwise"
-  size="medium"
-  bdColor="#c3c3c38a "
-  color="#249fe9"
-></ngx-spinner>
 <div class="container-job mx-auto">
-  <app-search></app-search>
+  <app-search
+    [data]="allJobRes"
+    (sendDataForm)="saveDataForm($event)"
+  ></app-search>
 
   <div class="job__all my-5 mx-auto">
     <h3>{{ totalJobs }} jobs found</h3>
     <div class="job__card">
-      <div *ngFor="let job of filteredJob">
+      <div *ngFor="let job of jobData">
         <app-job [job]="job"></app-job>
       </div>
     </div>

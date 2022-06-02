@@ -34,7 +34,7 @@ export class StatisticsComponent implements OnInit {
   public showXAxisLabel: boolean = true;
   public showYAxisLabel: boolean = true;
   public xAxisLabel: string = 'Month';
-  public yAxisLabel: string = 'Number Job';
+  public yAxisLabel: string = 'Number of Job';
 
   public colorScheme = {
     domain: [

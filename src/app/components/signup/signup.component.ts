@@ -5,6 +5,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -62,20 +63,30 @@ export class SignupComponent implements OnInit {
       location: 'Viet Nam',
     };
     this.spinner.show();
-    this.authService.signup(user).subscribe((res: AuthResponse) => {
-      console.log(res);
-      this.spinner.hide();
+    this.authService.signup(user).subscribe(
+      (res: AuthResponse) => {
+        console.log(res);
+        this.spinner.hide();
 
-      this.authService
-        .login({ email: this.email.value, password: this.password.value })
-        .subscribe((val) => {
-          if (this.authService.isLogin) {
-            this.router.navigate(['/admin/home']);
-          } else {
-            console.log(val);
-          }
+        this.authService
+          .login({ email: this.email.value, password: this.password.value })
+          .subscribe((val) => {
+            if (this.authService.isLogin) {
+              this.router.navigate(['/admin/home']);
+            } else {
+              console.log(val);
+            }
+          });
+      },
+      (err) => {
+        this.spinner.hide();
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.error.msg,
         });
-    });
+      }
+    );
   }
 
   // check confirm password

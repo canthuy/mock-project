@@ -3,6 +3,9 @@ import { JobService } from './../../../services/job.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-job',
@@ -35,7 +38,9 @@ export class EditJobComponent implements OnInit {
   constructor(
     private jobService: JobService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -84,18 +89,45 @@ export class EditJobComponent implements OnInit {
 
   // Submit Form
   public onSubmit() {
-    console.log('submit');
-
+    this.spinner.show();
     if (this.editMode) {
-      this.jobService
-        .updateJob(this.job._id, this.jobForm.value)
-        .subscribe((res) => {
+      this.jobService.updateJob(this.job._id, this.jobForm.value).subscribe(
+        (res) => {
+          this.spinner.hide();
+          this.toastr.success('Your change have been successfully saved', '', {
+            timeOut: 5000,
+            toastClass: 'ngx-toastr mt-2 toast-success',
+          });
           this.router.navigate(['/admin/jobs']);
-        });
+        },
+        (err) => {
+          this.spinner.hide();
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: err.error.msg,
+          });
+        }
+      );
     } else {
-      this.jobService.addJob(this.jobForm.value).subscribe((res) => {
-        this.router.navigate(['/admin/jobs']);
-      });
+      this.jobService.addJob(this.jobForm.value).subscribe(
+        (res) => {
+          this.spinner.hide();
+          this.toastr.success('Job created successfully', '', {
+            timeOut: 5000,
+            toastClass: 'ngx-toastr mt-2 toast-success',
+          });
+          this.router.navigate(['/admin/jobs']);
+        },
+        (err) => {
+          this.spinner.hide();
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: err.error.msg,
+          });
+        }
+      );
     }
   }
 

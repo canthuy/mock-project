@@ -2,6 +2,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/job.model';
 import { JobService } from 'src/app/services/job.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-all-jobs',
@@ -9,6 +10,8 @@ import { JobService } from 'src/app/services/job.service';
   styleUrls: ['./all-jobs.component.scss'],
 })
 export class AllJobsComponent implements OnInit {
+  public allJobRes: any;
+  private jobSubcription: Subscription;
   jobData: Job[] = [];
   filteredJob: Job[] = [];
   totalJobs: number = 0;
@@ -23,21 +26,26 @@ export class AllJobsComponent implements OnInit {
     this.spinner.show();
     this.jobService.getAllJobs().subscribe((res: any) => {
       this.spinner.hide();
-      this.filteredJob = this.jobData = res.jobs;
+      this.allJobRes = res;
+      this.jobData = res.jobs;
       this.totalJobs = res.totalJobs;
       this.numOfPages = res.numOfPages;
-      console.log(res);
+    });
+    this.jobSubcription = this.jobService.jobsChange.subscribe((res: any) => {
+      this.jobData = res.jobs;
+      this.totalJobs = res.totalJobs;
+      this.numOfPages = res.numOfPages;
     });
   }
 
   goToPage(page) {
+    this.spinner.show();
     this.jobService.nextPageAllJobs(page).subscribe((res: any) => {
-      console.log(res);
+      this.spinner.hide();
     });
+  }
 
-    this.jobService.jobsChange.subscribe((jobs: Job[]) => {
-      this.jobData = jobs;
-      console.log(jobs);
-    });
+  ngOnDestroy() {
+    this.jobSubcription.unsubscribe();
   }
 }

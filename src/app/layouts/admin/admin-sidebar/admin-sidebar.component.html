@@ -1,4 +1,4 @@
-<nav class="sidebar bg-light pl-0">
+<nav class="sidebar pl-0">
   <div class="main-menu">
     <ul class="sidebar-items pcoded-left-item pt-3">
       <li
@@ -6,14 +6,19 @@
         routerLink="/admin/home"
         routerLinkActive="active"
       >
-        <span class="pcoded-micon"><i class="fas fa-chart-bar"></i> Stats</span>
+        <span class="pcoded-micon"
+          ><i class="fas fa-chart-bar mr-2"></i> Stats</span
+        >
       </li>
       <li
         class="sidebar-item"
         routerLink="/admin/jobs"
         routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
-        <span class="pcoded-micon"><i class="fas fa-list"></i> All Jobs</span>
+        <span class="pcoded-micon"
+          ><i class="fas fa-list mr-2"></i> All Jobs</span
+        >
       </li>
       <li
         class="sidebar-item"
@@ -21,7 +26,7 @@
         routerLinkActive="active"
       >
         <span class="pcoded-micon"
-          ><i class="fas fa-folder-plus"></i> Add Job</span
+          ><i class="fas fa-folder-plus mr-2"></i> Add Job</span
         >
       </li>
       <li
@@ -30,7 +35,7 @@
         routerLinkActive="active"
       >
         <span class="pcoded-micon"
-          ><i class="fas fa-user-circle"></i> Profile</span
+          ><i class="fas fa-user-circle mr-2"></i> Profile</span
         >
       </li>
     </ul>

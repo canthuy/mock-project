@@ -1,4 +1,4 @@
-<div class="w-75 shadow p-3 mt-3 mx-auto">
+<div class="w-75 form-edit shadow px-5 py-3 mt-5 mx-auto">
   <h4 class="text-center">{{ editMode ? "Edit Job" : "Add New Job" }}</h4>
   <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
     <div class="form-group mb-0 mt-2">
@@ -45,7 +45,7 @@
           *ngFor="let st of arrStatus"
           [ngValue]="st"
         >
-          {{ st }}
+          {{ st | titlecase }}
         </option>
       </select>
     </div>
@@ -57,7 +57,7 @@
           *ngFor="let type of jobTypes"
           [ngValue]="type"
         >
-          {{ type }}
+          {{ type | titlecase }}
         </option>
       </select>
     </div>

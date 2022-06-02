@@ -1,44 +1,101 @@
 <ngx-spinner
-  [fullScreen]="false"
-  type="ball-fussion"
+  [fullScreen]="true"
+  type="ball-spin-clockwise"
   size="medium"
-  bdColor="rgba(51,51,51,0.5)"
+  bdColor="#c3c3c38a "
+  color="#249fe9"
 ></ngx-spinner>
 
-<div class="row mt-4">
-  <div class="col-xl-4 col-md-6">
-    <div class="rounded job-statistic job-pending p-4">
-      <div
-        class="d-flex text-warning align-items-center justify-content-between"
+<div class="container-custom mx-auto">
+  <div class="row m-0 mt-4">
+    <div class="col-xl-4 col-md-6">
+      <div class="rounded job-statistic job-pending p-4">
+        <div
+          class="d-flex text-warning align-items-center justify-content-between"
+        >
+          <h1>{{ totalStats.pending }}</h1>
+          <div class="p-3 container-icon rounded">
+            <i class="fas fa-spinner icon"></i>
+          </div>
+        </div>
+        <h5 class="mt-4">Pending Applications</h5>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6">
+      <div class="rounded job-statistic job-interview p-4">
+        <div class="d-flex align-items-center justify-content-between">
+          <h1>{{ totalStats.interview }}</h1>
+          <div class="p-3 container-icon rounded">
+            <i class="fas fa-calendar-check icon"></i>
+          </div>
+        </div>
+        <h5 class="mt-4">Interviews Scheduled</h5>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6">
+      <div class="rounded job-statistic job-declined p-4">
+        <div class="d-flex align-items-center justify-content-between">
+          <h1>{{ totalStats.declined }}</h1>
+          <div class="p-3 container-icon rounded">
+            <i class="fas fa-calendar-times icon"></i>
+          </div>
+        </div>
+        <h5 class="mt-4">Jobs Declined</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto my-5 p-4 border rounded shadow">
+    <div class="align-items-center d-flex justify-content-between">
+      <h5 class="pl-5">Applications Analytics</h5>
+      <button class="btn btn-warning mr-5 text-white" (click)="onChangeChart()">
+        {{ barChart ? "Line Chart" : "Bar Chart" }}
+      </button>
+    </div>
+
+    <div
+      class="d-flex justify-content-center mt-5"
+      *ngIf="barChart; else lineChart"
+    >
+      <ngx-charts-bar-vertical
+        [view]="view"
+        [legend]="legend"
+        [legendPosition]="legendPosition"
+        [legendTitle]="legendTitle"
+        [scheme]="colorScheme"
+        [barPadding]="50"
+        [xAxis]="xAxis"
+        [yAxis]="yAxis"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [timeline]="timeline"
+        [results]="data"
       >
-        <h1>{{ totalStats.pending }}</h1>
-        <div class="p-3 container-icon rounded">
-          <i class="fas fa-spinner icon"></i>
-        </div>
-      </div>
-      <h5 class="mt-4">Pending Applications</h5>
+      </ngx-charts-bar-vertical>
     </div>
-  </div>
-  <div class="col-xl-4 col-md-6">
-    <div class="rounded job-statistic job-interview p-4">
-      <div class="d-flex align-items-center justify-content-between">
-        <h1>{{ totalStats.interview }}</h1>
-        <div class="p-3 container-icon rounded">
-          <i class="fas fa-calendar-check icon"></i>
-        </div>
+
+    <ng-template #lineChart>
+      <div class="d-flex justify-content-center mt-5">
+        <ngx-charts-line-chart
+          [view]="view"
+          [legend]="legend"
+          [legendPosition]="legendPosition"
+          [legendTitle]="legendTitle"
+          [scheme]="colorScheme"
+          [barPadding]="50"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [timeline]="timeline"
+          [results]="data"
+        >
+        </ngx-charts-line-chart>
       </div>
-      <h5 class="mt-4">Interviews Scheduled</h5>
-    </div>
-  </div>
-  <div class="col-xl-4 col-md-6">
-    <div class="rounded job-statistic job-declined p-4">
-      <div class="d-flex align-items-center justify-content-between">
-        <h1>{{ totalStats.declined }}</h1>
-        <div class="p-3 container-icon rounded">
-          <i class="fas fa-calendar-times icon"></i>
-        </div>
-      </div>
-      <h5 class="mt-4">Jobs Declined</h5>
-    </div>
+    </ng-template>
   </div>
 </div>

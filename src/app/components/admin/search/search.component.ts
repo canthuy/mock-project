@@ -56,7 +56,7 @@ export class SearchComponent implements OnInit {
         this.searchForm.value.status,
         this.searchForm.value.type,
         this.searchForm.value.sort,
-        '1',
+        this.searchForm.value.page,
         this.searchForm.value.search
       )
       .subscribe((res: any) => {

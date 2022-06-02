@@ -1,0 +1,18 @@
+.container {
+  line-height: 2rem;
+}
+.our-team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.item {
+  width: 32%;
+
+  padding-bottom: 20px;
+  overflow: hidden;
+  img {
+    min-height: 200px;
+    width: 100%;
+  }
+}

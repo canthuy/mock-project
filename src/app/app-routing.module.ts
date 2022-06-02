@@ -1,3 +1,5 @@
+import { AboutUsComponent } from './layouts/about-us/about-us.component';
+import { HrInsiderComponent } from './layouts/hr-insider/hr-insider.component';
 import { AuthGuard } from './guards/auth.guard';
 import { EditJobComponent } from './components/admin/edit-job/edit-job.component';
 import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.component';
@@ -11,12 +13,16 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component';
 import { StatisticsComponent } from './components/admin/statistics/statistics.component';
 import { AdminProfileComponent } from './components/admin/admin-profile/admin-profile.component';
+import { ContactUsComponent } from './layouts/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'hr-insider', component: HrInsiderComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'contact-us', component: ContactUsComponent },
   {
     path: 'admin',
     component: AdminHomeComponent,

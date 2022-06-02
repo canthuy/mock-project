@@ -4,7 +4,7 @@
   <div class="job__all my-5 mx-auto">
     <h3>{{ totalJobs }} jobs found</h3>
     <div class="job__card">
-      <div *ngFor="let job of jobData">
+      <div *ngFor="let job of filteredJob">
         <app-job [job]="job"></app-job>
       </div>
     </div>

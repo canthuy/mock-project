@@ -13,6 +13,7 @@ export class AllJobsComponent implements OnInit {
   public allJobRes: any;
   private jobSubcription: Subscription;
   jobData: Job[] = [];
+  filteredJob: Job[] = [];
   totalJobs: number = 0;
   numOfPages: number = 0;
 

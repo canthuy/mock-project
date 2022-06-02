@@ -100,4 +100,8 @@ export class JobService {
       })
     );
   }
+
+  public deleteJob(id: string) {
+    return this.http.delete(`${this.BASE_URL}/toolkit/jobs/${id}`);
+  }
 }

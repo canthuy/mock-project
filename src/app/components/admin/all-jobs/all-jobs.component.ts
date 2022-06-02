@@ -12,6 +12,15 @@ import { Subscription } from 'rxjs';
 export class AllJobsComponent implements OnInit {
   public allJobRes: any;
   private jobSubcription: Subscription;
+
+  private param = {
+    status: 'all',
+    jobType: 'all',
+    sort: 'latest',
+    page: '1',
+    search: '',
+  };
+
   jobData: Job[] = [];
   filteredJob: Job[] = [];
   totalJobs: number = 0;
@@ -40,11 +49,18 @@ export class AllJobsComponent implements OnInit {
 
   goToPage(page) {
     this.spinner.show();
-    this.jobService.nextPageAllJobs(page).subscribe((res: any) => {
+    this.param.page = page;
+    this.jobService.getJobs(this.param).subscribe((res: any) => {
       this.spinner.hide();
     });
   }
 
+  saveDataForm(p) {
+    this.param.search = p.search;
+    this.param.jobType = p.jobType;
+    this.param.sort = p.sort;
+    this.param.status = p.status;
+  }
   ngOnDestroy() {
     this.jobSubcription.unsubscribe();
   }

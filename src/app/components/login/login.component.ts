@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -39,20 +40,31 @@ export class LoginComponent implements OnInit {
   // Login function
   public login(): void {
     this.spinner.show();
-    this.authService.login(this.loginForm.value).subscribe((val) => {
-      this.spinner.hide();
-      if (this.authService.isLogin) {
-        this.router.navigate(['/admin/home']);
-        this.showSuccess();
-      } else {
-        console.log(val);
+    this.authService.login(this.loginForm.value).subscribe(
+      (val) => {
+        this.spinner.hide();
+        if (this.authService.isLogin) {
+          this.router.navigate(['/admin/home']);
+          this.showSuccess();
+        } else {
+          console.log(val);
+        }
+      },
+      (err) => {
+        this.spinner.hide();
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.error.msg,
+        });
       }
-    });
+    );
   }
 
   private showSuccess() {
-    this.toastr.success('Success', '', {
+    this.toastr.success(`Welcome Back ${this.authService.user.name} `, '', {
       timeOut: 5000,
+      toastClass: 'ngx-toastr mt-2 toast-success',
     });
   }
 

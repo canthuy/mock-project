@@ -28,5 +28,13 @@ $btn-border-radius: 0.25rem;
   transform: translate(-50%, -50%);
 }
 
+.toast-success {
+  background-image: none;
+}
+.toast-container .ngx-toastr {
+  box-shadow: none;
+  background-color: #38ac4b;
+}
+
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

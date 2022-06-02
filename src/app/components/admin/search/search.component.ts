@@ -56,7 +56,7 @@ export class SearchComponent implements OnInit {
         this.searchForm.value.status,
         this.searchForm.value.type,
         this.searchForm.value.sort,
-        '1',
+        this.searchForm.value.page,
         this.searchForm.value.search
       )
       .subscribe((res: any) => {
@@ -68,5 +68,8 @@ export class SearchComponent implements OnInit {
   //Cancel Search
   public onClear() {
     this.search.reset();
+    this.status[0];
+    this.type[0];
+    this.sort[0];
   }
 }

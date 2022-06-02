@@ -10,7 +10,7 @@ import { HomeComponent } from './layouts/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component';
 import { StatisticsComponent } from './components/admin/statistics/statistics.component';
-import { AdminProfileComponent } from './layouts/admin/admin-profile/admin-profile.component';
+import { AdminProfileComponent } from './components/admin/admin-profile/admin-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

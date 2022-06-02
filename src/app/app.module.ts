@@ -28,7 +28,7 @@ import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component
 import { SearchComponent } from './components/admin/search/search.component';
 import { StatisticsComponent } from './components/admin/statistics/statistics.component';
 import { JobComponent } from './layouts/job/job.component';
-import { AdminProfileComponent } from './layouts/admin/admin-profile/admin-profile.component';
+import { AdminProfileComponent } from './components/admin/admin-profile/admin-profile.component';
 
 @NgModule({
   declarations: [

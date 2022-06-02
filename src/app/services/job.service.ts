@@ -35,11 +35,11 @@ export class JobService {
   }
 
   public searchJob(
-    status: string,
-    jobType: string,
-    sort: string,
-    page: string,
-    search: string
+    status: string = 'all',
+    jobType: string = 'all',
+    sort: string = 'latest',
+    page: string = '1',
+    search: string = ''
   ) {
     return this.http
       .get(`${this.BASE_URL}/toolkit/jobs`, {
@@ -64,5 +64,8 @@ export class JobService {
 
   public deleteJob(id: string) {
     return this.http.delete(`${this.BASE_URL}/toolkit/jobs/${id}`);
+  }
+  public nextPageAllJobs(page: string) {
+    return this.http.get(`${this.BASE_URL}/toolkit/jobs?page=${page}  `);
   }
 }

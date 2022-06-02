@@ -8,29 +8,61 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class JobService {
-  private BASE_URL = 'https://jobify-prod.herokuapp.com/api/v1';
+  private BASE_URL = 'https://jobify-prod.herokuapp.com/api/v1/toolkit/jobs';
   private jobs: Job[] = [];
+  public jobsChange = new Subject();
+  private defaultParam = {
+    status: 'all',
+    jobType: 'all',
+    sort: 'latest',
+    page: '1',
+    search: '',
+  };
 
   constructor(private http: HttpClient) {}
 
   public getAllJobs() {
-    return this.http.get(`${this.BASE_URL}/jobs`).pipe(
-      tap((res: any) => {
-        this.jobs = res.jobs;
+    return this.http
+      .get(this.BASE_URL, {
+        params: {
+          sort: 'latest',
+        },
       })
-    );
+      .pipe(
+        tap((res: any) => {
+          this.jobs = res.jobs;
+          this.jobsChange.next(res);
+        })
+      );
   }
 
+  public getJobs(param = this.defaultParam) {
+    return this.http
+      .get(this.BASE_URL, {
+        params: {
+          status: param.status,
+          jobType: param.jobType,
+          sort: param.sort,
+          page: param.page,
+          search: param.search,
+        },
+      })
+      .pipe(
+        tap((res: any) => {
+          this.jobsChange.next(res);
+        })
+      );
+  }
   public getJobById(id: string) {
     return this.jobs.find((value) => value._id === id);
   }
 
   public getStats() {
-    return this.http.get(`${this.BASE_URL}/toolkit/jobs/stats`);
+    return this.http.get(`${this.BASE_URL}/stats`);
   }
 
   public addJob(job: Job) {
-    return this.http.post(`${this.BASE_URL}/jobs`, job);
+    return this.http.post(this.BASE_URL, job);
   }
 
   public searchJob(
@@ -40,22 +72,32 @@ export class JobService {
     page: string = '1',
     search: string = ''
   ) {
-    return this.http.get(`${this.BASE_URL}/toolkit/jobs`, {
-      params: {
-        status: status,
-        jobType: jobType,
-        sort: sort,
-        page: page,
-        search: search,
-      },
-    });
+    return this.http
+      .get(this.BASE_URL, {
+        params: {
+          status: status,
+          jobType: jobType,
+          sort: sort,
+          page: page,
+          search: search,
+        },
+      })
+      .pipe(
+        tap((res: any) => {
+          this.jobsChange.next(res);
+        })
+      );
   }
 
   public updateJob(id: string, job: Job) {
-    return this.http.patch(`${this.BASE_URL}/toolkit/jobs/${id}`, job);
+    return this.http.patch(`${this.BASE_URL}/${id}`, job);
   }
 
   public nextPageAllJobs(page: string) {
-    return this.http.get(`${this.BASE_URL}/toolkit/jobs?page=${page}  `);
+    return this.http.get(`${this.BASE_URL}?page=${page}`).pipe(
+      tap((res: any) => {
+        this.jobsChange.next(res);
+      })
+    );
   }
 }

@@ -4,9 +4,6 @@ header {
   border-bottom: 1px solid #979797;
   z-index: 999;
 
-  .active {
-    color: #fff;
-  }
   .nav-item {
     position: relative;
 
@@ -14,6 +11,11 @@ header {
       color: #d9d9d9;
 
       &:hover {
+        color: #fff;
+      }
+    }
+    &.active {
+      .nav-link {
         color: #fff;
       }
     }
@@ -27,15 +29,15 @@ header {
     line-height: 1;
     transform: translateY(-50%);
   }
-  .user-dropdown{
+  .user-dropdown {
     cursor: pointer;
   }
-  .dropdown-menu{
+  .dropdown-menu {
     left: auto;
     right: 0;
     min-width: 100%;
   }
-  .dropdown-toggle::after{
+  .dropdown-toggle::after {
     margin-left: 10px;
   }
 }

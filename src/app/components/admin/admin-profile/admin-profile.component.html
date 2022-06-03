@@ -7,22 +7,28 @@
       <label>Name<span class="text__err">&nbsp;*</span></label>
       <input type="text" class="form-control" formControlName="name" />
     </div>
+
     <div class="form-group mb-0 mt-2">
-      <label>Last Name<span class="text__err">&nbsp;*</span></label>
-      <input type="text" class="form-control" formControlName="last_name" />
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        [readonly]="true"
+      />
     </div>
     <div class="form-group mb-0 mt-2">
-      <label>Email<span class="text__err">&nbsp;*</span></label>
-      <input type="email" class="form-control" formControlName="email" />
-    </div>
-    <div class="form-group mb-0 mt-2">
-      <label>City<span class="text__err">&nbsp;*</span></label>
-      <input type="text" class="form-control" formControlName="city" />
+      <label>Location<span class="text__err">&nbsp;*</span></label>
+      <input type="text" class="form-control" formControlName="location" />
     </div>
 
-    <!-- <div class="d-flex justify-content-end mt-3">
-      <button type="button" class="btn btn-danger mr-3">Cancel</button>
-      <button type="submit" class="btn btn-success">Save</button>
-    </div> -->
+    <div class="d-flex justify-content-end mt-3">
+      <button type="button" class="btn btn-danger mr-3" (click)="onCancel()">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-success" (click)="onSave()">
+        Save
+      </button>
+    </div>
   </form>
 </div>

@@ -55,4 +55,21 @@ export class AuthService {
     localStorage.removeItem(this.TOKEN_NAME);
     localStorage.removeItem('user');
   }
+
+  public updateProfile(user: User) {
+    user.lastName = 'lastname';
+    console.log(user);
+
+    return this.http.patch(`${this.BASE_URL}/auth/updateUser`, user).pipe(
+      tap((res: any) => {
+        const saveUser = {
+          name: res.user.name,
+          email: res.user.email,
+          location: res.user.location,
+        };
+        localStorage.setItem('user', JSON.stringify(saveUser));
+        this.user = saveUser;
+      })
+    );
+  }
 }

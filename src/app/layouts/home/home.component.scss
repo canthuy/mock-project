@@ -18,6 +18,11 @@
 
   &--Distance {
     margin-top: 10rem;
+    padding-bottom: 5rem;
+
+    button.btn-outline-warning:hover {
+      color: white;
+    }
   }
 
   &--gap {

@@ -23,8 +23,8 @@ export class JobComponent implements OnInit {
   // Delete Job
   public onDelete(id: string) {
     Swal.fire({
-      title: 'Are you sure you want to delete this job?',
-      text: 'This job will be removed immediately. You cannot undo this action. ',
+      title: 'Delete Job',
+      text: 'Are you sure you want to delete this job? This job will be removed permanently. ',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

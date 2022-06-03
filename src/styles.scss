@@ -36,5 +36,46 @@ $btn-border-radius: 0.25rem;
   background-color: #38ac4b;
 }
 
+.swal2-container {
+  .swal2-icon {
+    width: 4em;
+    height: 4em;
+  }
+  .swal2-icon.swal2-warning {
+    border-color: #ffee00;
+    color: #ffee00;
+  }
+  .swal2-icon .swal2-icon-content {
+    font-size: 3em;
+  }
+
+  .swal2-title {
+    font-size: 1.5em;
+  }
+  .swal2-html-container {
+    font-size: 1em;
+  }
+
+  .swal2-icon.swal2-error [class^="swal2-x-mark-line"] {
+    top: 1.9em;
+  }
+
+  .swal2-icon.swal2-error {
+    border-color: #ff0000;
+    color: #ff0000;
+  }
+  .swal2-icon.swal2-error [class^="swal2-x-mark-line"] {
+    background-color: #ff0000;
+  }
+  .swal2-icon.swal2-error [class^="swal2-x-mark-line"][class$="left"] {
+    left: 0.5em;
+  }
+  .swal2-icon.swal2-error [class^="swal2-x-mark-line"][class$="right"] {
+    right: 0.5em;
+  }
+  .swal2-popup {
+    width: 30em;
+  }
+}
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";

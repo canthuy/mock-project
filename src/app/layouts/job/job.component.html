@@ -20,19 +20,19 @@
           {{ job.createdAt | date }}
         </div>
         <ng-container *ngIf="job_status === jobStatus[2]">
-          <button class="btn btn-outline-danger">
+          <span class="text-danger">
             {{ job_status | titlecase }}
-          </button>
+          </span>
         </ng-container>
         <ng-container *ngIf="job_status === jobStatus[0]">
-          <button class="btn btn-outline-warning">
+          <span class="text-warning">
             {{ job_status | titlecase }}
-          </button>
+          </span>
         </ng-container>
         <ng-container *ngIf="job_status === jobStatus[1]">
-          <button class="btn btn-outline-success">
+          <span class="text-success">
             {{ job_status | titlecase }}
-          </button>
+          </span>
         </ng-container>
       </div>
     </div>

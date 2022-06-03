@@ -1,0 +1,36 @@
+.col-7 {
+  background-image: url("https://www.vietnamworks.com//hrinsider//wp-content/uploads/2022/05/shutterstock_646163284-1.jpg");
+  background-size: cover;
+  height: 430px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 40px;
+  margin-top: 100px;
+}
+.content {
+  position: absolute;
+  bottom: 0;
+}
+.col-5 {
+  margin-bottom: 40px;
+  margin-top: 100px;
+  display: flex;
+
+  align-items: stretch;
+  h2 {
+    font-size: 18px;
+  }
+
+  .fullimg {
+    display: flex;
+  }
+  .des {
+    color: black;
+  }
+  img {
+    width: 130px;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+}

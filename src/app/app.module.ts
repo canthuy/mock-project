@@ -29,6 +29,9 @@ import { SearchComponent } from './components/admin/search/search.component';
 import { StatisticsComponent } from './components/admin/statistics/statistics.component';
 import { JobComponent } from './layouts/job/job.component';
 import { AdminProfileComponent } from './components/admin/admin-profile/admin-profile.component';
+import { HrInsiderComponent } from './layouts/hr-insider/hr-insider.component';
+import { AboutUsComponent } from './layouts/about-us/about-us.component';
+import { ContactUsComponent } from './layouts/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { AdminProfileComponent } from './components/admin/admin-profile/admin-pr
     StatisticsComponent,
     JobComponent,
     AdminProfileComponent,
+    HrInsiderComponent,
+    AboutUsComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,

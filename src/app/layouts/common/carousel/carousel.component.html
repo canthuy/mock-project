@@ -1,21 +1,56 @@
+<div class="logo">
+  <a routerLink="/">
+    <img src="../../../../assets/images/logo-vnw-white.svg" />
+  </a>
+</div>
+
 <ngb-carousel
-  #carousel
-  [interval]="1000"
+  [interval]="3000"
   [pauseOnHover]="pauseOnHover"
-  (slide)="onSlide($event)"
+  *ngIf="images"
+  class="carousel text-white text-center"
 >
-  <ng-template ngbSlide *ngFor="let img of images; index as i">
-    <div class="carousel-caption">
-      <h3>My slide {{ i + 1 }} title</h3>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper my-5">
+      <img [src]="images[0]" />
+      <h5>Speach to Text</h5>
+      <p class="w-50 mx-auto">
+        Improve your interviews by transcribing your interview records and get
+        the information you need
+      </p>
+
+      <img [src]="images[1]" />
+      <h5>Rating and Compare</h5>
+      <p class="w-50 mx-auto">
+        Rate the CVs you receive for your job posts, and compare them to find
+        the best talents
+      </p>
     </div>
-    <a
-      href="https://www.google.fr/?q=Number+{{ i + 1 }}"
-      target="_blank"
-      rel="nofollow noopener noreferrer"
-    >
-      <div class="picsum-img-wrapper">
-        <img [src]="img" alt="My image {{ i + 1 }} description" />
-      </div>
-    </a>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper my-5">
+      <img [src]="images[2]" />
+      <h5>All CVs in one place</h5>
+      <p class="w-50 mx-auto">
+        We'll help you store and manage all your CVs, either from your local
+        device or from other websites
+      </p>
+      <img [src]="images[3]" />
+      <h5>Send emails with ease</h5>
+      <p class="w-50 mx-auto">
+        Setup your email templates with us and we'll help you send them without
+        having to edit each one
+      </p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper my-5">
+      <img [src]="images[4]" />
+      <h5>Applications Management System</h5>
+      <p class="w-50 mx-auto">
+        Manage your applications with simple drag-and-drop, on intuitive user
+        interface with many helpful features
+      </p>
+    </div>
   </ng-template>
 </ngb-carousel>

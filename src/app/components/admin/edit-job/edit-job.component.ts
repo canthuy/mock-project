@@ -1,3 +1,4 @@
+import { CanComponentDeactivate } from './../../../models/canDeactivate';
 import { Job } from 'src/app/models/job.model';
 import { JobService } from './../../../services/job.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './edit-job.component.html',
   styleUrls: ['./edit-job.component.scss'],
 })
-export class EditJobComponent implements OnInit {
+export class EditJobComponent implements OnInit, CanComponentDeactivate {
   public editMode: boolean;
   public arrStatus: string[] = ['pending', 'interview', 'declined'];
   public jobTypes: string[] = [
@@ -42,6 +43,9 @@ export class EditJobComponent implements OnInit {
     private toastr: ToastrService,
     private spinner: NgxSpinnerService
   ) {}
+  canExit() {
+    return true;
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((param) => {

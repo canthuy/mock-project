@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from './guards/can-deactivate.guard';
 import { AboutUsComponent } from './layouts/about-us/about-us.component';
 import { HrInsiderComponent } from './layouts/hr-insider/hr-insider.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -18,8 +19,14 @@ import { ContactUsComponent } from './layouts/contact-us/contact-us.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+  },
   { path: 'hr-insider', component: HrInsiderComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
@@ -30,13 +37,25 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: StatisticsComponent },
-      { path: 'profile', component: AdminProfileComponent },
+      {
+        path: 'profile',
+        component: AdminProfileComponent,
+        canDeactivate: [CanDeactivateGuard],
+      },
       {
         path: 'jobs',
         children: [
           { path: '', component: AllJobsComponent },
-          { path: 'new', component: EditJobComponent },
-          { path: 'edit/:id', component: EditJobComponent },
+          {
+            path: 'new',
+            component: EditJobComponent,
+            canDeactivate: [CanDeactivateGuard],
+          },
+          {
+            path: 'edit/:id',
+            component: EditJobComponent,
+            canDeactivate: [CanDeactivateGuard],
+          },
         ],
       },
     ],

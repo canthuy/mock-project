@@ -76,7 +76,7 @@ export class StatisticsComponent implements OnInit {
     } else {
       this.data = [
         {
-          name: 'Applications',
+          name: 'Job(s)',
           series: this.series,
         },
       ];

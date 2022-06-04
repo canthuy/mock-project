@@ -12,51 +12,85 @@
   ></iframe>
 </div>
 
-<section class="contact p-5">
+<div class="site-section bg-light pt-5">
   <div class="container">
     <div class="row">
-      <div class="col-6">
-        <div class="contact__text">
-          <div class="section-title">
-            <span class="text-danger">INFORMATION</span>
-            <h2>Contact Us</h2>
-            <p>
-              As you might expect of a company that began as a high-end
-              interiors contractor, we pay strict attention.
-            </p>
-          </div>
-          <div class="contact__info">
-            <h4>Vietnam</h4>
-            <p>
-              Technology Villages 3 and 4, Software Area, Hoa Lac Hi-tech Park,
-              Km 29, Thang Long Highway, Tan Xa commune, Thach That district,
-              Hanoi
-              <br />Tel.: +84 24 73 044 888 <br />Fax: +84 24 73 041 545
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="contact__form">
-          <form action="#">
-            <div class="row">
-              <div class="col-6">
-                <input class="form-control" type="text" placeholder="Name" />
-              </div>
-              <div class="col-6">
-                <input class="form-control" type="text" placeholder="Email" />
-              </div>
-              <div class="col-12">
-                <textarea class="form-control" placeholder="Message"></textarea>
-                <button type="submit" class="site-btn btn-primary">
-                  Send Message
-                </button>
-              </div>
+      <div class="col-md-12 col-lg-8 mb-5">
+        <form action="#" class="p-5 bg-white">
+          <div class="row form-group">
+            <div class="col-md-12 mb-3 mb-md-0">
+              <label class="font-weight-bold" for="fullname">Full Name</label>
+              <input
+                type="text"
+                id="fullname"
+                class="form-control"
+                placeholder="Full Name"
+              />
             </div>
-          </form>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="font-weight-bold" for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="Email Address"
+              />
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="font-weight-bold" for="email">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                class="form-control"
+                placeholder="Enter Subject"
+              />
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="font-weight-bold" for="message">Message</label>
+              <textarea
+                name="message"
+                id="message"
+                cols="30"
+                rows="5"
+                class="form-control"
+                placeholder="Say hello to us"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <input
+                type="submit"
+                value="Send"
+                class="btn btn-primary py-2 px-4"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="p-4 mb-3 bg-white">
+          <h3 class="h5 text-black mb-3">Contact Info</h3>
+          <p class="mb-0 font-weight-bold">Address</p>
+          <p class="mb-4">
+            Technology Villages 3 and 4, Software Area, Hoa Lac Hi-tech Park, Km
+            29, Thang Long Highway, Tan Xa commune, Thach That district, Hanoi
+          </p>
+
+          <p class="mb-0 font-weight-bold">Phone</p>
+          <p class="mb-4"><a href="#">+84 24 73 044 888</a></p>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 <app-footer></app-footer>

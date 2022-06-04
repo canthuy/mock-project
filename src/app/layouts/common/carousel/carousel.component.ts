@@ -17,9 +17,17 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  images = [62, 83, 466, 965, 982, 1043, 738].map(
-    (n) => `https://picsum.photos/id/${n}/900/500`
-  );
+  // images = [62, 83, 466, 965, 982, 1043, 738].map(
+  //   (n) => `https://picsum.photos/id/${n}/900/500`
+  // );
+
+  images = [
+    '../../../../assets/images/pannels/left-pannel__intro1.svg',
+    '../../../../assets/images/pannels/left-pannel__intro2.svg',
+    '../../../../assets/images/pannels/left-pannel__intro3.svg',
+    '../../../../assets/images/pannels/left-pannel__intro4.svg',
+    '../../../../assets/images/pannels/left-pannel__intro5.svg',
+  ];
 
   paused = false;
   unpauseOnArrow = false;

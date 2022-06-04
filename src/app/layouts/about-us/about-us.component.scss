@@ -1,7 +1,7 @@
 .container {
   line-height: 2rem;
 }
-.our-team {
+.our-office {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -15,4 +15,17 @@
     min-height: 200px;
     width: 100%;
   }
+}
+.our-benefits{
+  p{
+    font-size: 15px;
+  }
+}
+.fas{
+  font-size: 40px;
+  background-color: #005385;
+  padding: 10px;
+  color: white;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }

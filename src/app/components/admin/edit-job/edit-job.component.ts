@@ -43,9 +43,40 @@ export class EditJobComponent implements OnInit, CanComponentDeactivate {
     private toastr: ToastrService,
     private spinner: NgxSpinnerService
   ) {}
-  canExit() {
+  canExit = () => {
+    let currentJob = {
+      position: '',
+      company: '',
+      jobLocation: '',
+      status: 'pending',
+      jobType: 'full-time',
+    };
+    if (this.editMode) {
+      currentJob = {
+        position: this.job.position,
+        company: this.job.company,
+        jobLocation: this.job.jobLocation,
+        status: this.job.status,
+        jobType: this.job.jobType,
+      };
+      if (JSON.stringify(currentJob) !== JSON.stringify(this.jobForm.value)) {
+        let result = confirm(
+          "You haven't saved your editing yet, are you sure to navigate away?"
+        );
+        return result;
+      }
+    } else {
+      console.log(currentJob, this.jobForm.value);
+
+      if (JSON.stringify(currentJob) !== JSON.stringify(this.jobForm.value)) {
+        let result = confirm(
+          "You haven't saved your editing yet, are you sure to navigate away?"
+        );
+        return result;
+      }
+    }
     return true;
-  }
+  };
 
   ngOnInit(): void {
     this.route.params.subscribe((param) => {

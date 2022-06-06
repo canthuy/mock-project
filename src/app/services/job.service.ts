@@ -70,7 +70,7 @@ export class JobService {
   }
 
   public deleteJob(id: string) {
-    return this.http.delete(`${this.BASE_URL}/toolkit/jobs/${id}`);
+    return this.http.delete(`${this.BASE_URL}/${id}`);
   }
 
   // public searchJob(

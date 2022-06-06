@@ -1,6 +1,9 @@
+import { AuthService } from './../../../services/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { JobService } from 'src/app/services/job.service';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-statistics',
@@ -50,22 +53,39 @@ export class StatisticsComponent implements OnInit {
 
   constructor(
     private jobService: JobService,
-    private spinner: NgxSpinnerService
+    private authService: AuthService,
+    private spinner: NgxSpinnerService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.spinner.show();
-    this.jobService.getStats().subscribe((res: any) => {
-      this.spinner.hide();
-      this.totalStats = res.defaultStats;
-      this.series = res.monthlyApplications.map((val) => {
-        return {
-          name: val.date,
-          value: val.count,
-        };
-      });
-      this.data = this.series;
-    });
+    this.jobService.getStats().subscribe(
+      (res: any) => {
+        this.spinner.hide();
+        this.totalStats = res.defaultStats;
+        this.series = res.monthlyApplications.map((val) => {
+          return {
+            name: val.date,
+            value: val.count,
+          };
+        });
+        this.data = this.series;
+      },
+      (err) => {
+        this.spinner.hide();
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Your session is about to expire ',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.authService.logout();
+            this.router.navigate(['/login']);
+          }
+        });
+      }
+    );
   }
 
   // Change chart mode

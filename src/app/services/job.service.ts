@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Job } from './../models/job.model';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +11,8 @@ export class JobService {
   private BASE_URL = 'https://jobify-prod.herokuapp.com/api/v1/toolkit/jobs';
   private jobs: Job[] = [];
   public jobsChange = new Subject();
+  public status = new BehaviorSubject('all');
+
   private defaultParam = {
     status: 'all',
     jobType: 'all',
@@ -21,20 +23,20 @@ export class JobService {
 
   constructor(private http: HttpClient) {}
 
-  public getAllJobs() {
-    return this.http
-      .get(this.BASE_URL, {
-        params: {
-          sort: 'latest',
-        },
-      })
-      .pipe(
-        tap((res: any) => {
-          this.jobs = res.jobs;
-          this.jobsChange.next(res);
-        })
-      );
-  }
+  // public getAllJobs() {
+  //   return this.http
+  //     .get(this.BASE_URL, {
+  //       params: {
+  //         sort: 'latest',
+  //       },
+  //     })
+  //     .pipe(
+  //       tap((res: any) => {
+  //         this.jobs = res.jobs;
+  //         this.jobsChange.next(res);
+  //       })
+  //     );
+  // }
 
   public getJobs(param = this.defaultParam) {
     return this.http
@@ -49,6 +51,7 @@ export class JobService {
       })
       .pipe(
         tap((res: any) => {
+          this.jobs = res.jobs;
           this.jobsChange.next(res);
         })
       );

@@ -11,6 +11,7 @@ import { JobService } from 'src/app/services/job.service';
 export class SearchComponent implements OnInit {
   @Input('data') allJobRes;
   @Input('page') currentPage: string;
+  @Input('initStatus') initStatus;
   @Output('sendDataForm') sendDataForm = new EventEmitter();
 
   public jobStatus: string[] = ['all', 'pending', 'interview', 'declined'];
@@ -24,19 +25,16 @@ export class SearchComponent implements OnInit {
 
   public jobSort: string[] = ['latest', 'oldest', 'a-z', 'z-a'];
 
-  public searchForm = new FormGroup({
-    search: new FormControl(''),
-    status: new FormControl(this.jobStatus[0]),
-    type: new FormControl(this.jobTypes[0]),
-    sort: new FormControl(this.jobSort[0]),
-  });
+  public searchForm: FormGroup;
 
   constructor(
     private jobService: JobService,
     private spinner: NgxSpinnerService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initForm();
+  }
 
   //getter
   get search() {
@@ -50,6 +48,17 @@ export class SearchComponent implements OnInit {
   }
   get sort() {
     return this.searchForm.get('sort');
+  }
+
+  // init Form
+  private initForm() {
+    this.searchForm = new FormGroup({
+      search: new FormControl(''),
+      status: new FormControl(this.initStatus),
+      type: new FormControl(this.jobTypes[0]),
+      sort: new FormControl(this.jobSort[0]),
+    });
+    this.onFilter();
   }
 
   //Submit Search
@@ -83,6 +92,9 @@ export class SearchComponent implements OnInit {
       search: this.searchForm.value.search,
     };
     this.sendDataForm.emit(param);
-    this.jobService.jobsChange.next(this.allJobRes);
+    this.spinner.show();
+    this.jobService.getJobs(param).subscribe((res) => {
+      this.spinner.hide();
+    });
   }
 }

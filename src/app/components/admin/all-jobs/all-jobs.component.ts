@@ -13,7 +13,7 @@ export class AllJobsComponent implements OnInit {
   public allJobRes: any;
   private jobSubcription: Subscription;
 
-  private param = {
+  public param = {
     status: 'all',
     jobType: 'all',
     sort: 'latest',

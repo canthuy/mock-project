@@ -1,3 +1,4 @@
+import { CanComponentDeactivate } from './../../../models/canDeactivate';
 import { Job } from 'src/app/models/job.model';
 import { JobService } from './../../../services/job.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './edit-job.component.html',
   styleUrls: ['./edit-job.component.scss'],
 })
-export class EditJobComponent implements OnInit {
+export class EditJobComponent implements OnInit, CanComponentDeactivate {
   public editMode: boolean;
   public arrStatus: string[] = ['pending', 'interview', 'declined'];
   public jobTypes: string[] = [
@@ -42,6 +43,40 @@ export class EditJobComponent implements OnInit {
     private toastr: ToastrService,
     private spinner: NgxSpinnerService
   ) {}
+  canExit = () => {
+    let currentJob = {
+      position: '',
+      company: '',
+      jobLocation: '',
+      status: 'pending',
+      jobType: 'full-time',
+    };
+    if (this.editMode) {
+      currentJob = {
+        position: this.job.position,
+        company: this.job.company,
+        jobLocation: this.job.jobLocation,
+        status: this.job.status,
+        jobType: this.job.jobType,
+      };
+      if (JSON.stringify(currentJob) !== JSON.stringify(this.jobForm.value)) {
+        let result = confirm(
+          "You haven't saved your editing yet, are you sure to navigate away?"
+        );
+        return result;
+      }
+    } else {
+      console.log(currentJob, this.jobForm.value);
+
+      if (JSON.stringify(currentJob) !== JSON.stringify(this.jobForm.value)) {
+        let result = confirm(
+          "You haven't saved your editing yet, are you sure to navigate away?"
+        );
+        return result;
+      }
+    }
+    return true;
+  };
 
   ngOnInit(): void {
     this.route.params.subscribe((param) => {

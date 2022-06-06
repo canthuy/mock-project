@@ -10,6 +10,7 @@ import { JobService } from 'src/app/services/job.service';
 })
 export class SearchComponent implements OnInit {
   @Input('data') allJobRes;
+  @Input('page') currentPage: string;
   @Output('sendDataForm') sendDataForm = new EventEmitter();
 
   public jobStatus: string[] = ['all', 'pending', 'interview', 'declined'];
@@ -57,12 +58,12 @@ export class SearchComponent implements OnInit {
     const param = {
       status: this.searchForm.value.status,
       jobType: this.searchForm.value.type,
+      page: this.currentPage,
       sort: this.searchForm.value.sort,
-      page: this.searchForm.value.page,
       search: this.searchForm.value.search,
     };
     this.sendDataForm.emit(param);
-    this.jobService.getJobs(param).subscribe((res: any) => {
+    this.jobService.getJobs(param).subscribe(() => {
       this.spinner.hide();
     });
   }
@@ -73,6 +74,15 @@ export class SearchComponent implements OnInit {
     this.status.setValue(this.jobStatus[0]);
     this.type.setValue(this.jobTypes[0]);
     this.sort.setValue(this.jobSort[0]);
+
+    const param = {
+      status: this.searchForm.value.status,
+      jobType: this.searchForm.value.type,
+      sort: this.searchForm.value.sort,
+      page: this.currentPage,
+      search: this.searchForm.value.search,
+    };
+    this.sendDataForm.emit(param);
     this.jobService.jobsChange.next(this.allJobRes);
   }
 }

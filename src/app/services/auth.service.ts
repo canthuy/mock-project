@@ -57,10 +57,9 @@ export class AuthService {
   }
 
   public updateProfile(user: User) {
-    user.lastName = 'lastname';
-    console.log(user);
-
-    return this.http.patch(`${this.BASE_URL}/auth/updateUser`, user).pipe(
+    const userUpdate = { ...user };
+    userUpdate.lastName = 'lastname';
+    return this.http.patch(`${this.BASE_URL}/auth/updateUser`, userUpdate).pipe(
       tap((res: any) => {
         const saveUser = {
           name: res.user.name,

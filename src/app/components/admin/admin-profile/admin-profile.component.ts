@@ -5,13 +5,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
+import { CanComponentDeactivate } from 'src/app/models/canDeactivate';
 
 @Component({
   selector: 'app-admin-profile',
   templateUrl: './admin-profile.component.html',
   styleUrls: ['./admin-profile.component.scss'],
 })
-export class AdminProfileComponent implements OnInit {
+export class AdminProfileComponent implements OnInit, CanComponentDeactivate {
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -26,6 +27,19 @@ export class AdminProfileComponent implements OnInit {
     email: new FormControl(this.authService.user.email),
     location: new FormControl(this.authService.user.location),
   });
+
+  canExit = () => {
+    if (
+      JSON.stringify(this.authService.user) !==
+      JSON.stringify(this.profileForm.value)
+    ) {
+      let result = confirm(
+        "You haven't saved your editing yet, are you sure to navigate away?"
+      );
+      return result;
+    }
+    return true;
+  };
 
   //getter
   get name() {
@@ -44,24 +58,29 @@ export class AdminProfileComponent implements OnInit {
   }
 
   public onSave() {
-    this.spinner.show();
-    this.authService.updateProfile(this.profileForm.value).subscribe(
-      (res) => {
-        this.spinner.hide();
-        this.toastr.success('Edit profile successfully', '', {
-          timeOut: 5000,
-          toastClass: 'ngx-toastr mt-2 toast-success',
-        });
-        this.router.navigate(['/admin/profile']);
-      },
-      (err) => {
-        this.spinner.hide();
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: err.error.msg,
-        });
-      }
-    );
+    if (
+      JSON.stringify(this.authService.user) !==
+      JSON.stringify(this.profileForm.value)
+    ) {
+      this.spinner.show();
+      this.authService.updateProfile(this.profileForm.value).subscribe(
+        (res) => {
+          this.spinner.hide();
+          this.toastr.success('Edit profile successfully', '', {
+            timeOut: 5000,
+            toastClass: 'ngx-toastr mt-2 toast-success',
+          });
+          this.router.navigate(['/admin/profile']);
+        },
+        (err) => {
+          this.spinner.hide();
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: err.error.msg,
+          });
+        }
+      );
+    }
   }
 }

@@ -1,6 +1,9 @@
-<nav class="sidebar pl-0">
-  <div class="main-menu">
-    <ul class="sidebar-items pcoded-left-item pt-3">
+<nav class="sidebar pl-0 pt-4">
+  <div
+    class="main-menu d-lg-block d-none navbar1"
+    [ngClass]="{ navbar1: checkNavBar }"
+  >
+    <ul class="sidebar-items pcoded-left-item">
       <li
         class="sidebar-item"
         routerLink="/admin/home"

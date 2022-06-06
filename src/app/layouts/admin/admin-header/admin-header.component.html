@@ -1,32 +1,48 @@
 <nav
   class="navbar w-100 navbar-expand-lg navbar-dark bg-primary text-white p-0"
 >
-  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse">
-      <span class="navbar-toggler-icon"></span>
-    </button> -->
-  <div class="col-2">
-    <div class="bg-primary nav-left py-3 d-flex justify-content-center">
-      <div class="navbar-brand bg-primary" routerLink="/admin">
-        <img
-          src="../../../../assets/images/logo-vnw-white.svg"
-          class="d-inline-block w-100"
-          alt=""
-        />
-      </div>
+  <div class="col-lg-2 collapse navbar-collapse">
+    <div class="bg-primary nav-left py-3 d-block mx-auto" routerLink="/admin">
+      <img
+        src="../../../../assets/images/logo-vnw-white.svg"
+        class="d-inline-block w-100"
+        alt=""
+      />
     </div>
   </div>
-  <div class="col-10">
-    <div class="collapse navbar-collapse">
-      <ul
-        class="align-items-center flex-row justify-content-center navbar-nav w-100"
-      >
-        <!-- <li class="nav-item nav-mobile">
-          <i class="fas fa-bars" style="font-size: 24px"></i>
-        </li> -->
+  <div class="col-lg-10 col-12 p-0">
+    <div class="nav-center">
+      <ul class="flex-row justify-content-center navbar-nav w-100 py-3">
+        <li class="mr-xl-5 mr-sm-3 d-lg-none nav-dropdown">
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn btn-outline-primary text-white"
+              id="dropdownBasic1"
+              ngbDropdownToggle
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <div ngbDropdownMenu>
+              <button ngbDropdownItem routerLink="/admin/home">
+                <i class="fas fa-chart-bar mr-2"></i> Stats
+              </button>
+              <button ngbDropdownItem routerLink="/admin/jobs">
+                <i class="fas fa-list mr-2"></i> All Jobs
+              </button>
+              <button ngbDropdownItem routerLink="/admin/jobs/new">
+                <i class="fas fa-folder-plus mr-2"></i> Add Job
+              </button>
+              <button ngbDropdownItem routerLink="/admin/profile">
+                <i class="fas fa-user-circle mr-2"></i> Profile
+              </button>
+            </div>
+          </div>
+        </li>
         <li class="flex-grow-1 nav-item text-center">
           <h4>Admin Dashboard</h4>
         </li>
-        <li class="mr-xl-5 mr-sm-3">
+        <li class="mr-xl-5 mr-sm-3 dropdown-account">
           <div ngbDropdown class="d-inline-block">
             <button
               type="button"

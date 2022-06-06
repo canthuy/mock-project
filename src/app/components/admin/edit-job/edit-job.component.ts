@@ -66,8 +66,6 @@ export class EditJobComponent implements OnInit, CanComponentDeactivate {
         return result;
       }
     } else {
-      console.log(currentJob, this.jobForm.value);
-
       if (JSON.stringify(currentJob) !== JSON.stringify(this.jobForm.value)) {
         let result = confirm(
           "You haven't saved your editing yet, are you sure to navigate away?"

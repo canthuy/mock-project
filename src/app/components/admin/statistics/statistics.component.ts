@@ -102,4 +102,10 @@ export class StatisticsComponent implements OnInit {
       ];
     }
   }
+
+  // get all data by status
+  public getByStatus(status) {
+    this.jobService.status.next(status);
+    this.router.navigate(['/admin/jobs']);
+  }
 }

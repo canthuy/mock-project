@@ -7,8 +7,8 @@
 
   <div class="job__all my-5 mx-auto" *ngIf="jobData.length > 0; else jobNull">
     <h3>{{ totalJobs }} jobs found</h3>
-    <div class="job__card">
-      <div *ngFor="let job of jobData">
+    <div class="row job__card">
+      <div class="col-lg-6 col-12" *ngFor="let job of jobData">
         <app-job [job]="job" [param]="param"></app-job>
       </div>
     </div>

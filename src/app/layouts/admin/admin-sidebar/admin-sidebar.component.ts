@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-sidebar.component.scss'],
 })
 export class AdminSidebarComponent implements OnInit {
+  public checkNavBar = false;
   constructor() {}
 
   ngOnInit(): void {}
+  onClick() {
+    this.checkNavBar = !this.checkNavBar;
+  }
 }

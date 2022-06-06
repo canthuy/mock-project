@@ -77,7 +77,7 @@ export class StatisticsComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'Your session is about to expire ',
+          text: 'Your session is about to expire. Please re-login! ',
         }).then((result) => {
           if (result.isConfirmed) {
             this.authService.logout();

@@ -50,12 +50,13 @@
       *ngIf="barChart; else lineChart"
     >
       <ngx-charts-bar-vertical
+        (window:resize)="onResize($event)"
         [view]="view"
         [legend]="legend"
         [legendPosition]="legendPosition"
         [legendTitle]="legendTitle"
         [scheme]="colorScheme"
-        [barPadding]="50"
+        [barPadding]="40"
         [xAxis]="xAxis"
         [yAxis]="yAxis"
         [showXAxisLabel]="showXAxisLabel"
@@ -71,12 +72,13 @@
     <ng-template #lineChart>
       <div class="d-flex justify-content-center mt-5">
         <ngx-charts-line-chart
+          (window:resize)="onResize($event)"
           [view]="view"
           [legend]="legend"
           [legendPosition]="legendPosition"
           [legendTitle]="legendTitle"
           [scheme]="colorScheme"
-          [barPadding]="50"
+          [barPadding]="40"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           [showXAxisLabel]="showXAxisLabel"

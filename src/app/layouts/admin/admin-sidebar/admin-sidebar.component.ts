@@ -10,7 +10,4 @@ export class AdminSidebarComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-  onClick() {
-    this.checkNavBar = !this.checkNavBar;
-  }
 }

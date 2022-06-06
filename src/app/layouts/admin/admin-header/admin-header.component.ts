@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHeaderComponent implements OnInit {
   public show = false;
+  public checkNavBar = false;
   constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}

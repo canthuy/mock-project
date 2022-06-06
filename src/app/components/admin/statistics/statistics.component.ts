@@ -102,4 +102,7 @@ export class StatisticsComponent implements OnInit {
       ];
     }
   }
+  onResize(event) {
+    this.view = [event.target.innerWidth / 1.35, 400];
+  }
 }

@@ -105,4 +105,10 @@ export class StatisticsComponent implements OnInit {
   onResize(event) {
     this.view = [event.target.innerWidth / 1.35, 400];
   }
+
+  // get all data by status
+  public getByStatus(status) {
+    this.jobService.status.next(status);
+    this.router.navigate(['/admin/jobs']);
+  }
 }

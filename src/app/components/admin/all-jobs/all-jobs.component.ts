@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/job.model';
@@ -11,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class AllJobsComponent implements OnInit {
   public allJobRes: any;
-  private jobSubcription: Subscription;
+  private jobSubscription: Subscription;
 
   public param = {
     status: 'all',
@@ -33,18 +34,18 @@ export class AllJobsComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinner.show();
-    this.jobService.getAllJobs().subscribe((res: any) => {
+    this.jobSubscription = this.jobService.status.subscribe((st) => {
+      this.param.status = st;
+    });
+
+    let s = this.jobService.jobsChange.subscribe((res: any) => {
       this.spinner.hide();
-      this.allJobRes = res;
       this.jobData = res.jobs;
       this.totalJobs = res.totalJobs;
       this.numOfPages = res.numOfPages;
     });
-    this.jobSubcription = this.jobService.jobsChange.subscribe((res: any) => {
-      this.jobData = res.jobs;
-      this.totalJobs = res.totalJobs;
-      this.numOfPages = res.numOfPages;
-    });
+
+    this.jobSubscription.add(s);
   }
 
   goToPage(page) {
@@ -62,6 +63,6 @@ export class AllJobsComponent implements OnInit {
     this.param.status = p.status;
   }
   ngOnDestroy() {
-    this.jobSubcription.unsubscribe();
+    this.jobSubscription.unsubscribe();
   }
 }

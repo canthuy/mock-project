@@ -36,6 +36,15 @@ export class EditJobComponent implements OnInit, CanComponentDeactivate {
     updatedAt: '',
     createdAt: '',
   };
+
+  private currentJob = {
+    position: '',
+    company: '',
+    jobLocation: '',
+    status: 'pending',
+    jobType: 'full-time',
+  };
+
   constructor(
     private jobService: JobService,
     private route: ActivatedRoute,
@@ -44,29 +53,26 @@ export class EditJobComponent implements OnInit, CanComponentDeactivate {
     private spinner: NgxSpinnerService
   ) {}
   canExit = () => {
-    let currentJob = {
-      position: '',
-      company: '',
-      jobLocation: '',
-      status: 'pending',
-      jobType: 'full-time',
-    };
     if (this.editMode) {
-      currentJob = {
+      this.currentJob = {
         position: this.job.position,
         company: this.job.company,
         jobLocation: this.job.jobLocation,
         status: this.job.status,
         jobType: this.job.jobType,
       };
-      if (JSON.stringify(currentJob) !== JSON.stringify(this.jobForm.value)) {
+      if (
+        JSON.stringify(this.currentJob) !== JSON.stringify(this.jobForm.value)
+      ) {
         let result = confirm(
           "You haven't saved your editing yet, are you sure to navigate away?"
         );
         return result;
       }
     } else {
-      if (JSON.stringify(currentJob) !== JSON.stringify(this.jobForm.value)) {
+      if (
+        JSON.stringify(this.currentJob) !== JSON.stringify(this.jobForm.value)
+      ) {
         let result = confirm(
           "You haven't saved your editing yet, are you sure to navigate away?"
         );
@@ -123,6 +129,7 @@ export class EditJobComponent implements OnInit, CanComponentDeactivate {
   // Submit Form
   public onSubmit() {
     this.spinner.show();
+    this.currentJob = this.jobForm.value;
     if (this.editMode) {
       this.jobService.updateJob(this.job._id, this.jobForm.value).subscribe(
         (res) => {

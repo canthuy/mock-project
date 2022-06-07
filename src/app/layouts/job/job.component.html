@@ -1,4 +1,4 @@
-<div class="card m-3 shadow">
+<div class="card m-3 shadow" (click)="openDetail(content)">
   <div class="card-header">
     <h4>{{ job.position }}</h4>
     <h5 class="font-weight-light">{{ job.company }}</h5>
@@ -50,3 +50,81 @@
     </div>
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <div class="content d-block mx-auto">
+      <h4 class="text-center">{{ job.position }}</h4>
+      <p class="text-center">Company: {{ job.company }}</p>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h5>Job Features:</h5>
+    <div class="row">
+      <div class="col-4 p-o">
+        <div class="row">
+          <div class="col-4"><i class="fas fa-file p-0"></i></div>
+          <div class="col-8 p-0">
+            <p class="font-weight-bold">Status</p>
+            <p>{{ job.status }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 p-o">
+        <div class="row">
+          <div class="col-4"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="col-8 p-0">
+            <p class="font-weight-bold">Location</p>
+            <p>{{ job.jobLocation }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 p-o">
+        <div class="row">
+          <div class="col-4"><i class="fas fa-calendar-alt"></i></div>
+          <div class="col-8 p-0">
+            <p class="font-weight-bold">Created at</p>
+            <p>{{ job.createdAt | date }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 p-o">
+        <div class="row">
+          <div class="col-4"><i class="fas fa-building"></i></div>
+          <div class="col-8 p-0">
+            <p class="font-weight-bold">Type</p>
+            <p>{{ jobDetail.type }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 p-o">
+        <div class="row">
+          <div class="col-4"><i class="fas fa-dollar-sign"></i></div>
+          <div class="col-8 p-0">
+            <p class="font-weight-bold">Salary</p>
+            <p>Up to {{ jobDetail.salary | currency }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 p-o">
+        <div class="row">
+          <div class="col-4"><i class="fas fa-briefcase"></i></div>
+          <div class="col-8 p-0">
+            <p class="font-weight-bold">Experience required</p>
+            <p>{{ jobDetail.experience }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

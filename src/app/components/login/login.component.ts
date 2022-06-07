@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         this.spinner.hide();
+        this.authService.isLogin = false;
         Swal.fire({
           icon: 'error',
           title: 'Error',

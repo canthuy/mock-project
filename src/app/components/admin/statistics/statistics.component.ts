@@ -77,7 +77,7 @@ export class StatisticsComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'Your session is about to expire. Please re-login! ',
+          text: 'Your session is about to expire. Please login again! ',
         }).then((result) => {
           if (result.isConfirmed) {
             this.authService.logout();
@@ -103,7 +103,11 @@ export class StatisticsComponent implements OnInit {
     }
   }
   onResize(event) {
-    this.view = [event.target.innerWidth / 1.35, 400];
+    if (event.target.innerWidth < 950) {
+      this.view = [event.target.innerWidth / 1.35, 300];
+    } else {
+      this.view = [700, 300];
+    }
   }
 
   // get all data by status

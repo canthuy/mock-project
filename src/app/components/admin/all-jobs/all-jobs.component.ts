@@ -1,4 +1,3 @@
-import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/job.model';
@@ -23,7 +22,6 @@ export class AllJobsComponent implements OnInit {
   };
 
   jobData: Job[] = [];
-  filteredJob: Job[] = [];
   totalJobs: number = 0;
   numOfPages: number = 0;
 

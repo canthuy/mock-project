@@ -1,9 +1,3 @@
-<ngx-spinner
-  [fullScreen]="true"
-  type="ball-spin-clockwise"
-  size="medium"
-  bdColor="rgba(51,51,51,0.5)"
-></ngx-spinner>
 <div class="row m-0">
   <div class="col-md-4 bg-primary vh-100 d-flex align-items-center">
     <app-carousel></app-carousel>
@@ -16,7 +10,7 @@
       <form [formGroup]="signupForm" (ngSubmit)="signup()">
         <div class="form-group mb-0">
           <label class="font-weight-bold"
-            >Name<span class="text__err">&nbsp;*</span></label
+            >Name<sup class="text__err">&nbsp;*</sup></label
           >
           <input
             type="text"
@@ -30,7 +24,7 @@
         </div>
         <div class="form-group mb-0 mt-4">
           <label class="font-weight-bold"
-            >Email address<span class="text__err">&nbsp;*</span></label
+            >Email address<sup class="text__err">&nbsp;*</sup></label
           >
           <input
             type="email"
@@ -49,7 +43,7 @@
         </div>
         <div class="form-group mb-0 mt-4">
           <label class="font-weight-bold"
-            >Password<span class="text__err">&nbsp;*</span></label
+            >Password<sup class="text__err">&nbsp;*</sup></label
           >
           <input
             type="password"
@@ -68,7 +62,7 @@
         </div>
         <div class="form-group mb-0 mt-4">
           <label class="font-weight-bold"
-            >Confirm Password<span class="text__err">&nbsp;*</span></label
+            >Confirm Password<sup class="text__err">&nbsp;*</sup></label
           >
           <input
             type="password"

@@ -38,3 +38,7 @@
 .btn-danger {
   @include setColor(#f8d7da, #842029);
 }
+
+.close:focus-visible {
+  outline: none;
+}

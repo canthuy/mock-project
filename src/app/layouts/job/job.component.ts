@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { JobService } from 'src/app/services/job.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-job',
@@ -13,14 +14,47 @@ import { ToastrService } from 'ngx-toastr';
 export class JobComponent implements OnInit {
   @Input('job') job: Job;
   @Input('param') param;
+  private jobDetails = [
+    {
+      type: 'internship',
+      salary: 400,
+      experience: 'None',
+    },
+    {
+      type: 'remote',
+      salary: 700,
+      experience: '1+ years',
+    },
+    {
+      type: 'full-time',
+      salary: 1200,
+      experience: '2+ years',
+    },
+    {
+      type: 'part-time',
+      salary: 800,
+      experience: '1+ years',
+    },
+  ];
+
   public jobStatus: string[] = ['pending', 'interview', 'declined'];
+  public jobDetail: {
+    type: string;
+    salary: number;
+    experience: string;
+  };
   constructor(
     private jobService: JobService,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private modalService: NgbModal
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.jobDetail = this.jobDetails.find(
+      (value) => value.type === this.job.jobType
+    );
+  }
 
   get job_status() {
     return this.job.status;
@@ -51,5 +85,9 @@ export class JobComponent implements OnInit {
         });
       }
     });
+  }
+
+  public openDetail(content) {
+    this.modalService.open(content, { size: 'lg', centered: true });
   }
 }

@@ -1,38 +1,38 @@
-<div class="search-form form-group border shadow p-5 mb-0 mt-5 mx-auto">
+<div class="search-form form-group border shadow p-5 mb-0 mt-5 mx-auto rounded">
   <h4>Search Form</h4>
   <form [formGroup]="searchForm">
     <label>Search</label>
     <input type="text" class="form-control" formControlName="search" />
     <div class="row mt-4">
-      <div class="col-4">
+      <div class="input-group col-4">
         <div class="input-group-prepend">
           <span class="input-group-text">Status</span>
-          <select class="form-control" formControlName="status">
-            <option *ngFor="let status of jobStatus" [ngValue]="status">
-              {{ status | titlecase }}
-            </option>
-          </select>
         </div>
+        <select class="form-control" formControlName="status">
+          <option *ngFor="let status of jobStatus" [ngValue]="status">
+            {{ status | titlecase }}
+          </option>
+        </select>
       </div>
-      <div class="col-4">
+      <div class="input-group col-4">
         <div class="input-group-prepend">
           <span class="input-group-text">Type</span>
-          <select class="form-control" formControlName="type">
-            <option *ngFor="let type of jobTypes" [ngValue]="type">
-              {{ type | titlecase }}
-            </option>
-          </select>
         </div>
+        <select class="form-control" formControlName="type">
+          <option *ngFor="let type of jobTypes" [ngValue]="type">
+            {{ type | titlecase }}
+          </option>
+        </select>
       </div>
-      <div class="col-4">
+      <div class="input-group col-4">
         <div class="input-group-prepend">
           <span class="input-group-text">Sort</span>
-          <select class="form-control" formControlName="sort">
-            <option *ngFor="let sort of jobSort" [ngValue]="sort">
-              {{ sort | titlecase }}
-            </option>
-          </select>
         </div>
+        <select class="form-control" formControlName="sort">
+          <option *ngFor="let sort of jobSort" [ngValue]="sort">
+            {{ sort | titlecase }}
+          </option>
+        </select>
       </div>
     </div>
     <div class="search-btn d-flex justify-content-end mt-3">

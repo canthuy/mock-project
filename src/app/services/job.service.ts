@@ -10,7 +10,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class JobService {
   private BASE_URL = 'https://jobify-prod.herokuapp.com/api/v1/toolkit/jobs';
   private jobs: Job[] = [];
-  public jobsChange = new Subject();
+  // public jobsChange = new Subject();
   public status = new BehaviorSubject('all');
 
   private defaultParam = {
@@ -52,7 +52,7 @@ export class JobService {
       .pipe(
         tap((res: any) => {
           this.jobs = res.jobs;
-          this.jobsChange.next(res);
+          // this.jobsChange.next(res);
         })
       );
   }

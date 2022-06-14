@@ -10,7 +10,6 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class JobService {
   private BASE_URL = 'https://jobify-prod.herokuapp.com/api/v1/toolkit/jobs';
   private jobs: Job[] = [];
-  // public jobsChange = new Subject();
   public status = new BehaviorSubject('all');
 
   private defaultParam = {
@@ -22,21 +21,6 @@ export class JobService {
   };
 
   constructor(private http: HttpClient) {}
-
-  // public getAllJobs() {
-  //   return this.http
-  //     .get(this.BASE_URL, {
-  //       params: {
-  //         sort: 'latest',
-  //       },
-  //     })
-  //     .pipe(
-  //       tap((res: any) => {
-  //         this.jobs = res.jobs;
-  //         this.jobsChange.next(res);
-  //       })
-  //     );
-  // }
 
   public getJobs(param = this.defaultParam) {
     return this.http
@@ -52,7 +36,6 @@ export class JobService {
       .pipe(
         tap((res: any) => {
           this.jobs = res.jobs;
-          // this.jobsChange.next(res);
         })
       );
   }
@@ -106,5 +89,19 @@ export class JobService {
   //       this.jobsChange.next(res);
   //     })
   //   );
+  // }
+  // public getAllJobs() {
+  //   return this.http
+  //     .get(this.BASE_URL, {
+  //       params: {
+  //         sort: 'latest',
+  //       },
+  //     })
+  //     .pipe(
+  //       tap((res: any) => {
+  //         this.jobs = res.jobs;
+  //         this.jobsChange.next(res);
+  //       })
+  //     );
   // }
 }

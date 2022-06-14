@@ -46,9 +46,6 @@ export class AuthService {
   public signup(user: User) {
     return this.http.post(this.BASE_URL + '/auth/register', user);
   }
-  // public isLogin(): boolean {
-  //   return !!this.user;
-  // }
 
   public logout() {
     this.isLogin = false;
@@ -72,3 +69,6 @@ export class AuthService {
     );
   }
 }
+// public isLogin(): boolean {
+//   return !!this.user;
+// }

@@ -29,9 +29,13 @@ export class AdminProfileComponent implements OnInit, CanComponentDeactivate {
   });
 
   canExit = () => {
+    const currentUser = {
+      name: this.authService.user.name,
+      email: this.authService.user.email,
+      location: this.authService.user.location,
+    };
     if (
-      JSON.stringify(this.authService.user) !==
-      JSON.stringify(this.profileForm.value)
+      JSON.stringify(currentUser) !== JSON.stringify(this.profileForm.value)
     ) {
       let result = confirm(
         "You haven't saved your editing yet, are you sure to navigate away?"
@@ -70,7 +74,6 @@ export class AdminProfileComponent implements OnInit, CanComponentDeactivate {
             timeOut: 5000,
             toastClass: 'ngx-toastr mt-2 toast-success',
           });
-          this.router.navigate(['/admin/profile']);
         },
         (err) => {
           this.spinner.hide();

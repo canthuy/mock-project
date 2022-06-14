@@ -37,17 +37,6 @@ export class AllJobsComponent implements OnInit {
     this.jobSubscription = this.jobService.status.subscribe((st) => {
       this.param.status = st;
     });
-
-    // let s = this.jobService.jobsChange.subscribe((res: any) => {
-    //   this.spinner.hide();
-    //   console.log('init');
-
-    //   this.jobData = res.jobs;
-    //   this.totalJobs = res.totalJobs;
-    //   this.numOfPages = res.numOfPages;
-    // });
-
-    // this.jobSubscription.add(s);
   }
 
   public goToPage(page) {
@@ -55,8 +44,6 @@ export class AllJobsComponent implements OnInit {
     this.param.page = page;
     this.jobService.getJobs(this.param).subscribe((res: any) => {
       this.spinner.hide();
-      console.log('call api');
-
       this.jobData = res.jobs;
       this.totalJobs = res.totalJobs;
       this.numOfPages = res.numOfPages;
@@ -70,6 +57,7 @@ export class AllJobsComponent implements OnInit {
     this.param.page = '1';
     this.param.status = p.status;
     this.jobService.getJobs(this.param).subscribe((res: any) => {
+      this.spinner.hide();
       this.jobData = res.jobs;
       this.totalJobs = res.totalJobs;
       this.numOfPages = res.numOfPages;
@@ -94,3 +82,13 @@ export class AllJobsComponent implements OnInit {
     this.jobSubscription.unsubscribe();
   }
 }
+// let s = this.jobService.jobsChange.subscribe((res: any) => {
+//   this.spinner.hide();
+//   console.log('init');
+
+//   this.jobData = res.jobs;
+//   this.totalJobs = res.totalJobs;
+//   this.numOfPages = res.numOfPages;
+// });
+
+// this.jobSubscription.add(s);

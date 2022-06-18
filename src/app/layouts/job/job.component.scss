@@ -18,6 +18,9 @@
       @include setColor(#ff6b6b, #842029);
     }
   }
+  &-header {
+    cursor: pointer;
+  }
 }
 .fas {
   color: #005385;

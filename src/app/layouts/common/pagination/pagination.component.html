@@ -1,0 +1,8 @@
+<ngb-pagination
+  [collectionSize]="totalJobs"
+  [maxSize]="numOfPages"
+  [page]="page"
+  [rotate]="true"
+  [boundaryLinks]="true"
+  (pageChange)="goToPage($event)"
+></ngb-pagination>

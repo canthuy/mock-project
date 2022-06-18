@@ -1,9 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Job } from 'src/app/models/job.model';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { JobService } from 'src/app/services/job.service';
-import { ToastrService } from 'ngx-toastr';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -14,6 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class JobComponent implements OnInit {
   @Input('job') job: Job;
   @Input('param') param;
+  @Output('delete') delete = new EventEmitter();
   private jobDetails = [
     {
       type: 'internship',
@@ -44,8 +43,6 @@ export class JobComponent implements OnInit {
     experience: string;
   };
   constructor(
-    private jobService: JobService,
-    private toastr: ToastrService,
     private spinner: NgxSpinnerService,
     private modalService: NgbModal
   ) {}
@@ -73,16 +70,7 @@ export class JobComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.spinner.show();
-        this.jobService.deleteJob(id).subscribe((res: any) => {
-          this.spinner.hide();
-          this.jobService.getJobs(this.param).subscribe((res) => {
-            this.jobService.jobsChange.next(res);
-          });
-          this.toastr.success(res.msg, '', {
-            timeOut: 5000,
-            toastClass: 'ngx-toastr mt-2 toast-success',
-          });
-        });
+        this.delete.emit(id);
       }
     });
   }

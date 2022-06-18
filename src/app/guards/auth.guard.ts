@@ -6,6 +6,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
   Router,
+  ActivatedRoute,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -22,8 +23,15 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    const currentPath = window.location.href.replace(
+      window.location.origin,
+      ''
+    );
+
     if (!this.authService.isLogin) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login'], {
+        queryParams: { returnUrl: currentPath },
+      });
       return false;
     }
     return true;

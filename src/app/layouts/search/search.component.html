@@ -18,7 +18,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Type</span>
         </div>
-        <select class="form-control" formControlName="type">
+        <select class="form-control" formControlName="jobType">
           <option *ngFor="let type of jobTypes" [ngValue]="type">
             {{ type | titlecase }}
           </option>
@@ -44,7 +44,7 @@
         class="btn btn-warning text-white"
         (click)="onFilter()"
       >
-        Filter
+        Find Jobs
       </button>
     </div>
   </form>

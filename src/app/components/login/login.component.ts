@@ -2,7 +2,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 
@@ -19,15 +19,21 @@ export class LoginComponent implements OnInit {
     ]),
     password: new FormControl('', [Validators.required]),
   });
+  private returnUrl: string;
 
   constructor(
     private authService: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((res) => {
+      this.returnUrl = res.returnUrl;
+    });
+  }
 
   // getter formControl
   get email() {
@@ -44,10 +50,10 @@ export class LoginComponent implements OnInit {
       (val) => {
         this.spinner.hide();
         if (this.authService.isLogin) {
-          this.router.navigate(['/admin/home']);
+          if (this.returnUrl) {
+            this.router.navigate([this.returnUrl]);
+          } else this.router.navigate(['/admin/home']);
           this.showSuccess();
-        } else {
-          console.log(val);
         }
       },
       (err) => {

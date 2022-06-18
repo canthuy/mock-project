@@ -25,13 +25,14 @@ import { AdminFooterComponent } from './layouts/admin/admin-footer/admin-footer.
 import { AdminSidebarComponent } from './layouts/admin/admin-sidebar/admin-sidebar.component';
 import { EditJobComponent } from './components/admin/edit-job/edit-job.component';
 import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component';
-import { SearchComponent } from './components/admin/search/search.component';
+import { SearchComponent } from './layouts/search/search.component';
 import { StatisticsComponent } from './components/admin/statistics/statistics.component';
 import { JobComponent } from './layouts/job/job.component';
 import { AdminProfileComponent } from './components/admin/admin-profile/admin-profile.component';
 import { HrInsiderComponent } from './layouts/hr-insider/hr-insider.component';
 import { AboutUsComponent } from './layouts/about-us/about-us.component';
 import { ContactUsComponent } from './layouts/contact-us/contact-us.component';
+import { PaginationComponent } from './layouts/common/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ContactUsComponent } from './layouts/contact-us/contact-us.component';
     HrInsiderComponent,
     AboutUsComponent,
     ContactUsComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

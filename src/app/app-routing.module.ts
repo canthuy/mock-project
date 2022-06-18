@@ -1,12 +1,12 @@
 import { CanDeactivateGuard } from './guards/can-deactivate.guard';
-import { AboutUsComponent } from './layouts/about-us/about-us.component';
-import { HrInsiderComponent } from './layouts/hr-insider/hr-insider.component';
 import { AuthGuard } from './guards/auth.guard';
-import { EditJobComponent } from './components/admin/edit-job/edit-job.component';
-import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AboutUsComponent } from './layouts/about-us/about-us.component';
+import { HrInsiderComponent } from './layouts/hr-insider/hr-insider.component';
+import { EditJobComponent } from './components/admin/edit-job/edit-job.component';
+import { AdminHomeComponent } from './layouts/admin/admin-home/admin-home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './layouts/common/not-found/not-found.component';
 import { HomeComponent } from './layouts/home/home.component';

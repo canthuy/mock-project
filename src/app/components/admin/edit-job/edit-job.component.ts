@@ -132,12 +132,14 @@ export class EditJobComponent implements OnInit, CanComponentDeactivate {
     this.currentJob = this.jobForm.value;
     if (this.editMode) {
       this.jobService.updateJob(this.job._id, this.jobForm.value).subscribe(
-        (res) => {
+        (res: any) => {
+          this.job = res.updatedJob;
           this.spinner.hide();
           this.toastr.success('Your change have been successfully saved', '', {
             timeOut: 5000,
             toastClass: 'ngx-toastr mt-2 toast-success',
           });
+          this.jobService.status.next('all');
           this.router.navigate(['/admin/jobs']);
         },
         (err) => {
@@ -157,6 +159,7 @@ export class EditJobComponent implements OnInit, CanComponentDeactivate {
             timeOut: 5000,
             toastClass: 'ngx-toastr mt-2 toast-success',
           });
+          this.jobService.status.next('all');
           this.router.navigate(['/admin/jobs']);
         },
         (err) => {

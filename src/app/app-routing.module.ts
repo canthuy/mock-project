@@ -15,6 +15,7 @@ import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component
 import { StatisticsComponent } from './components/admin/statistics/statistics.component';
 import { AdminProfileComponent } from './components/admin/admin-profile/admin-profile.component';
 import { ContactUsComponent } from './layouts/contact-us/contact-us.component';
+import { UserAllJobsComponent } from './components/user/user-all-jobs/user-all-jobs.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'hr-insider', component: HrInsiderComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
+  { path: 'user-jobs', component: UserAllJobsComponent },
   {
     path: 'admin',
     component: AdminHomeComponent,

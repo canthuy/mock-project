@@ -35,14 +35,8 @@
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/contact-us">Contact US</a>
           </li>
-          <li class="nav-item nav-item--border">
-            <a
-              class="nav-link ml-2"
-              title="Job Seeker's Site"
-              href="https://www.vietnamworks.com?lang=en&amp;utm_source=homepage&amp;utm_medium=hp_header"
-              target="_blank"
-              >Job Seeker's Site</a
-            >
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/user-jobs">Job Seeker's Site</a>
           </li>
 
           <li class="ml-auto nav-item" *ngIf="authService.isLogin; else login">

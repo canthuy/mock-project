@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject, Subject } from 'rxjs';
 
+import jobs from '../../assets/data/data';
+import { userJob } from '../models/userJob.model';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -57,6 +60,10 @@ export class JobService {
 
   public deleteJob(id: string) {
     return this.http.delete(`${this.BASE_URL}/${id}`);
+  }
+
+  public getUserJobs() {
+    return jobs;
   }
 
   // public searchJob(

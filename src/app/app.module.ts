@@ -33,6 +33,8 @@ import { HrInsiderComponent } from './layouts/hr-insider/hr-insider.component';
 import { AboutUsComponent } from './layouts/about-us/about-us.component';
 import { ContactUsComponent } from './layouts/contact-us/contact-us.component';
 import { PaginationComponent } from './layouts/common/pagination/pagination.component';
+import { UserAllJobsComponent } from './components/user/user-all-jobs/user-all-jobs.component';
+import { UserJobComponent } from './components/user/user-job/user-job.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { PaginationComponent } from './layouts/common/pagination/pagination.comp
     AboutUsComponent,
     ContactUsComponent,
     PaginationComponent,
+    UserAllJobsComponent,
+    UserJobComponent,
   ],
   imports: [
     BrowserModule,

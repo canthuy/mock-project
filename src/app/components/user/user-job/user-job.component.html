@@ -1,0 +1,27 @@
+<div class="container job-container">
+  <div class="card my-3" *ngFor="let job of jobsArr">
+    <div class="single-job-items mb-30">
+      <div class="job-items">
+        <div class="company-img">
+          <a href="#"><img src="assets/img/icon/job-list1.png" alt="" /></a>
+        </div>
+        <div class="job-tittle job-tittle2">
+          <a href="#">
+            <h4>{{ job.Title }}</h4>
+          </a>
+          <ul>
+            <li>{{ job.Company }}</li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>{{ job.LocationNormalized }}
+            </li>
+            <li>Salary up to: {{ job.SalaryNormalized | currency }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="items-link items-link2 f-right">
+        <a>{{ job.ContractTime | titlecase }}</a>
+        <span>7 hours ago</span>
+      </div>
+    </div>
+  </div>
+</div>

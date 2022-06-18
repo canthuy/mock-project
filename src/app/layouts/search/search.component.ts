@@ -1,3 +1,4 @@
+import { JobService } from './../../services/job.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -30,7 +31,7 @@ export class SearchComponent implements OnInit {
 
   public searchForm: FormGroup;
 
-  constructor() {}
+  constructor(private jobService: JobService) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -81,5 +82,6 @@ export class SearchComponent implements OnInit {
     this.param = { ...this.searchForm.value };
 
     this.sendDataForm.emit(this.param);
+    this.jobService.status.next('all');
   }
 }

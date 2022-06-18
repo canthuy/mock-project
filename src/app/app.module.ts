@@ -32,6 +32,7 @@ import { AdminProfileComponent } from './components/admin/admin-profile/admin-pr
 import { HrInsiderComponent } from './layouts/hr-insider/hr-insider.component';
 import { AboutUsComponent } from './layouts/about-us/about-us.component';
 import { ContactUsComponent } from './layouts/contact-us/contact-us.component';
+import { PaginationComponent } from './layouts/common/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ContactUsComponent } from './layouts/contact-us/contact-us.component';
     HrInsiderComponent,
     AboutUsComponent,
     ContactUsComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

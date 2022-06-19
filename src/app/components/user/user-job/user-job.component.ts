@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JobService } from 'src/app/services/job.service';
 
 @Component({
@@ -8,10 +9,20 @@ import { JobService } from 'src/app/services/job.service';
 })
 export class UserJobComponent implements OnInit {
   jobsArr = [];
-  constructor(private JobService: JobService) {}
+  filtered = [];
+  constructor(private JobService: JobService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    this.jobsArr = this.JobService.getUserJobs();
-    console.log(this.jobsArr);
+    this.filtered = this.jobsArr = this.JobService.getUserJobs();
+  }
+
+  public openDetail(content) {
+    this.modalService.open(content, { size: 'lg', centered: true });
+  }
+
+  onKeyUp(value: string) {
+    this.filtered = this.jobsArr.filter((item) => {
+      return item.Title.toLowerCase().includes(value.trim().toLowerCase());
+    });
   }
 }

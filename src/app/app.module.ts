@@ -36,6 +36,7 @@ import { PaginationComponent } from './layouts/common/pagination/pagination.comp
 import { UserAllJobsComponent } from './components/user/user-all-jobs/user-all-jobs.component';
 import { UserJobComponent } from './components/user/user-job/user-job.component';
 import { BannerComponent } from './components/user/banner/banner.component';
+import { UserSearchJobComponent } from './components/user/user-search-job/user-search-job.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { BannerComponent } from './components/user/banner/banner.component';
     UserAllJobsComponent,
     UserJobComponent,
     BannerComponent,
+    UserSearchJobComponent,
   ],
   imports: [
     BrowserModule,

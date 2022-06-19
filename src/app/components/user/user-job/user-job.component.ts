@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserJob } from 'src/app/models/userJob.model';
 import { JobService } from 'src/app/services/job.service';
 
 @Component({
@@ -7,11 +8,10 @@ import { JobService } from 'src/app/services/job.service';
   styleUrls: ['./user-job.component.scss'],
 })
 export class UserJobComponent implements OnInit {
-  jobsArr = [];
-  constructor(private JobService: JobService) {}
+  public jobsArr = [];
+  constructor(private jobService: JobService) {}
 
   ngOnInit(): void {
-    this.jobsArr = this.JobService.getUserJobs();
-    console.log(this.jobsArr);
+    this.jobsArr = this.jobService.getUserJobs();
   }
 }

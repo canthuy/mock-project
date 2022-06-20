@@ -16,9 +16,9 @@ export class BannerComponent implements OnInit {
   ngOnInit(): void {}
 
   public images = [
-    '../../assets/user-job/Bannerlg_119708.webp',
-    '../../assets/user-job/Lazada_hr1banner_108340.webp',
-    '../../assets/user-job/Nestle_hrbanner1_109574.png',
+    '../../assets/images/user-job/Bannerlg_119708.webp',
+    '../../assets/images/user-job/Lazada_hr1banner_108340.webp',
+    '../../assets/images/user-job/Nestle_hrbanner1_109574.png',
   ];
 
   public paused = false;

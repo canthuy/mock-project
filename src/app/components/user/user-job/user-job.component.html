@@ -1,125 +1,98 @@
-<div class="container job-container">
-  <div class="form-group">
-    <input
-      type="text"
-      class="form-control"
-      #search
-      (keyup)="onKeyUp(search.value)"
-      placeholder="Filter..."
-    />
-  </div>
-  <div class="card my-3" *ngFor="let job of filtered">
-    <div class="single-job-items mb-30" (click)="openDetail(content)">
-      <div class="job-items">
-        <div class="company-img">
-          <a href="#"><img src="assets/img/icon/job-list1.png" alt="" /></a>
-        </div>
-        <div class="job-tittle job-tittle2">
-          <a href="#">
-            <h4>{{ job.Title }}</h4>
-          </a>
-          <ul>
-            <li>{{ job.Company }}</li>
-            <li>
-              <i class="fas fa-map-marker-alt"></i>{{ job.LocationNormalized }}
-            </li>
-            <li>Salary up to: {{ job.SalaryNormalized | currency }}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="items-link items-link2 f-right">
-        <a>{{ job.ContractTime | titlecase }}</a>
-        <span>7 hours ago</span>
-      </div>
+<div class="single-job-items" (click)="openDetail(content)">
+  <div class="col-3 pl-0">
+    <div class="company-img">
+      <img [src]="images[0]" alt="" />
     </div>
-
-    <!-- Job Detail pop up -->
-    <ng-template #content let-modal>
-      <div class="modal-header">
-        <h4 class="text-center flex-grow-1">
-          {{ job.Title }}
-        </h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss()"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h5>Company: {{ job.Company }}</h5>
-        <h5>Description</h5>
-        <p class="ml-5 mt-2">
-          {{ job.FullDescription }}
-        </p>
-        <h5>Job Features:</h5>
-        <div class="row ml-5 mt-2">
-          <div class="col-4 p-0">
-            <div class="d-flex">
-              <div><i class="fas fa-file p-0"></i></div>
-              <div class="ml-3">
-                <p class="font-weight-bold mb-0">Contract Type</p>
-                <p>
-                  {{
-                    job.contactType
-                      ? job.contactType
-                      : "No information provided"
-                  }}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-4 p-0">
-            <div class="d-flex">
-              <div><i class="fas fa-file p-0"></i></div>
-              <div class="ml-3">
-                <p class="font-weight-bold mb-0">Contract Time</p>
-                <p>{{ job.ContractTime | titlecase }}</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-4 p-0">
-            <div class="d-flex">
-              <div><i class="fas fa-map-marker-alt p-0"></i></div>
-              <div class="ml-3">
-                <p class="font-weight-bold mb-0">Location</p>
-                <p>{{ job.LocationRaw | titlecase }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row ml-5">
-          <div class="col-4 p-0">
-            <div class="d-flex">
-              <div><i class="fas fa-inbox"></i></div>
-              <div class="ml-3">
-                <p class="font-weight-bold mb-0">Category</p>
-                <p>{{ job.Category }}</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-4 p-0">
-            <div class="d-flex">
-              <div><i class="fas fa-dollar-sign p-0"></i></div>
-              <div class="ml-3">
-                <p class="font-weight-bold mb-0">Salary</p>
-                <p>Up to ${{ job.SalaryRaw }}</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-4 p-0">
-            <div class="d-flex">
-              <div><i class="fas fa-briefcase p-0"></i></div>
-              <div class="ml-3">
-                <p class="font-weight-bold mb-0">Source</p>
-                <a [href]="job.SourceName">{{ job.SourceName }}</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-template>
+  </div>
+  <div class="job-tittle">
+    <h5>{{ job.Title }}</h5>
+    <p>{{ job.Company }}</p>
   </div>
 </div>
+
+<!-- Job Detail pop up -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="text-center flex-grow-1">
+      {{ job.Title }}
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h5>Company: {{ job.Company }}</h5>
+    <h5>Description</h5>
+    <p class="ml-5 mt-2">
+      {{ job.FullDescription }}
+    </p>
+    <h5>Job Features:</h5>
+    <div class="row ml-5 mt-2">
+      <div class="col-4 p-0">
+        <div class="d-flex">
+          <div><i class="fas fa-file p-0"></i></div>
+          <div class="ml-3">
+            <p class="font-weight-bold mb-0">Contract Type</p>
+            <p>
+              {{
+                job.ContractType ? job.ContractType : "No information provided"
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 p-0">
+        <div class="d-flex">
+          <div><i class="fas fa-file p-0"></i></div>
+          <div class="ml-3">
+            <p class="font-weight-bold mb-0">Contract Time</p>
+            <p>{{ job.ContractTime | titlecase }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 p-0">
+        <div class="d-flex">
+          <div><i class="fas fa-map-marker-alt p-0"></i></div>
+          <div class="ml-3">
+            <p class="font-weight-bold mb-0">Location</p>
+            <p>{{ job.LocationRaw | titlecase }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row ml-5">
+      <div class="col-4 p-0">
+        <div class="d-flex">
+          <div><i class="fas fa-inbox"></i></div>
+          <div class="ml-3">
+            <p class="font-weight-bold mb-0">Category</p>
+            <p>{{ job.Category }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 p-0">
+        <div class="d-flex">
+          <div><i class="fas fa-dollar-sign p-0"></i></div>
+          <div class="ml-3">
+            <p class="font-weight-bold mb-0">Salary</p>
+            <p>Up to ${{ job.SalaryRaw }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 p-0">
+        <div class="d-flex">
+          <div><i class="fas fa-briefcase p-0"></i></div>
+          <div class="ml-3">
+            <p class="font-weight-bold mb-0">Source</p>
+            <a [href]="job.SourceName">{{ job.SourceName }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

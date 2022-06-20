@@ -1,0 +1,45 @@
+.carousel-container {
+  margin-top: 4.2rem;
+}
+
+.job-container {
+  width: 92%;
+  max-width: 1200px;
+
+  .form-group {
+    input {
+      max-width: 400px;
+    }
+  }
+}
+.title-category {
+  background-color: #cee5f7;
+}
+.nav {
+  .nav-item {
+    cursor: pointer;
+
+    .nav-link {
+      font-size: 1.1rem;
+    }
+
+    .text-active {
+      color: #f7941d;
+    }
+  }
+}
+
+.container-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+
+  .card {
+    cursor: default;
+    // Hover
+    &:hover {
+      box-shadow: 0px 0px 10px 7px #685c5c38;
+      border: 1px solid #f7941d;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-export interface userJob {
+export interface UserJob {
   Id: string;
   Title: string;
   FullDescription: string;
@@ -10,4 +10,5 @@ export interface userJob {
   SalaryRaw: string;
   SalaryNormalized: string;
   SourceName: string;
+  ContractType?: string;
 }

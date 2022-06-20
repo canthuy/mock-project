@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject, Subject } from 'rxjs';
 
-import jobs from '../../assets/data/data';
-import { userJob } from '../models/userJob.model';
+import user_jobs from '../../assets/data/data';
+import { UserJob } from '../models/userJob.model';
 
 @Injectable({
   providedIn: 'root',
@@ -63,7 +63,21 @@ export class JobService {
   }
 
   public getUserJobs() {
-    return jobs;
+    return user_jobs;
+  }
+
+  public filterByCategory(type: string) {
+    return user_jobs.filter((job) => job.Category === type);
+  }
+  public getCategories() {
+    let categories = new Set(user_jobs.map((job) => job.Category));
+
+    return [...categories].map((type) => {
+      return {
+        name: type,
+        totalJob: this.filterByCategory(type).length,
+      };
+    });
   }
 
   // public searchJob(
